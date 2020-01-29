@@ -4,18 +4,29 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ConnectionListener implements Runnable{
+public class ConnectionListener implements Runnable {
 
-	private ServerSocket listener;
-	
-	public ConnectionListener(int port, int backlog) throws IOException {
-		listener = new ServerSocket(port, backlog);
-	}
+	final int PORT = 10000;
+	final int BACKLOG = 10;
+	ServerSocket listener;
+	int clientID = 0;
 
 	@Override
 	public void run() {
-		while(true) {
-			//Socket connection = listener.accept();
+
+		try {
+
+			listener = new ServerSocket(PORT, BACKLOG);
+
+			while (true) {
+
+				Socket connection = listener.accept();
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+
 	}
+
 }
