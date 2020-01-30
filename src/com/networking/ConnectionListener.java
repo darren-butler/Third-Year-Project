@@ -5,7 +5,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Queue;
 
-public class ConnectionListener implements Runnable{
+public class ConnectionListener implements Runnable {
 
 	private final int PORT = 10000;
 	private final int BACKLOG = 10;
@@ -18,7 +18,7 @@ public class ConnectionListener implements Runnable{
 		this.clients = clients;
 		System.out.println("[Server]> spawning connection listener thread...");
 	}
-	
+
 	@Override
 	public void run() {	
 		try {
@@ -31,10 +31,11 @@ public class ConnectionListener implements Runnable{
 				clients.add(new Client(connection, clientID));
 				System.out.println("[Server]> new client #" + clientID + ", connected from ip:" + connection.getInetAddress());
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 }
