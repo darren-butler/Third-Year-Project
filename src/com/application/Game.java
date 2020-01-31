@@ -7,34 +7,22 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
+import com.networking.Connection;
+
 public class Game {
 
 	public static void main(String[] args) throws Throwable {
-		
+
 		final InetAddress IP = InetAddress.getByName("127.0.0.1");
 		final int PORT = 10000;
 		
 		Scanner console = new Scanner(System.in);
 		
-		Socket connection = new Socket(IP, PORT);
+		Connection connection = new Connection(IP, PORT);
+		Thread client = new Thread(connection);
 		
-		ObjectOutputStream out = new ObjectOutputStream(connection.getOutputStream());
-		out.flush();
+		client.start();	
 		
-		ObjectInputStream in = new ObjectInputStream(connection.getInputStream());
-		
-		while(true) {
-			String str = (String) in.readObject();
-			System.out.println(str);
-			
-			str = console.next();
-			sendString(str, out);
-		}
 	}
-	
-	private static void sendString(String str, ObjectOutputStream out) throws IOException {
-		out.writeObject(str);
-		out.flush();
-	}
-}
 
+}
