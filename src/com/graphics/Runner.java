@@ -1,13 +1,11 @@
 package com.graphics;
 
 //Imports
-import javafx.geometry.Insets;
 import javafx.application.Application;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Runner extends Application {
@@ -16,32 +14,20 @@ public class Runner extends Application {
 	private Board theBoard;
 	
 	//Private Parent method
-	private Parent theContent()  {
-		//Creates Bordered Pane as root and sets size
+	private Parent gameContent() {
 		BorderPane root = new BorderPane();
-		root.setPrefSize(600, 800);
+		root.setPrefSize(Board.WIDTH * Board.TILE_SIZE, Board.HEIGHT * Board.TILE_SIZE);
+		root.getChildren().addAll(Board.cellGroup, Board.pieceGroup);
 		
-		//Object arrow function used to update when a cell is clicked on
 		theBoard = new Board(event -> {
-			Cell cell = (Cell) event.getSource(); //Gets Cells Source-Location
+			Cell c = (Cell) event.getSource();
 			
-			if(cell.wasShot) { //If true cell is already blacked, make red
-				cell.shootRed();
-				return;
-			}
-			
-			//Cell is clicks on for the first time call function 
-			cell.shoot();
+			c.setFill(Color.BLACK);
 			
 		});
 		
-		//New VBox of type theBoard used to map theBoard to root scene
-		VBox vbox = new VBox(theBoard);
-		vbox.setAlignment(Pos.TOP_CENTER);
-		vbox.setPadding(new Insets(32, 32, 32, 32));
+		root.setTop(theBoard);		
 		
-		//Add theBoard to the root
-		root.setCenter(vbox);
 		return root;
 	}
 	
@@ -55,8 +41,8 @@ public class Runner extends Application {
 	//Used to call run function
 	@Override
 	public void start(Stage theStage) throws Exception {
-		Scene scene = new Scene(theContent());
-		theStage.setTitle("THE GAME ATTEMPT");
+		Scene scene = new Scene(gameContent(), 991, 800);
+		theStage.setTitle("The Game Board");
 		theStage.setScene(scene); //Adds the scene to the stage
 		theStage.setResizable(false); //Users cannot resize the window
 		theStage.show(); //Its Show Time!!

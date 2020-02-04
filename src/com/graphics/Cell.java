@@ -6,31 +6,29 @@ import javafx.scene.shape.Rectangle;
 
 public class Cell extends Rectangle {
 
-	//Public variables (Make private later)
-	public int x, y;
-	public boolean wasShot = false;
+private Piece piece;
 	
-	//3 Parameter Constructor 
-	public Cell(int x, int y, Board board) {
-		super(32, 32); //Calls on Rectangle with 32 pixel size
-		this.x = x;
-		this.y = y;
-		setFill(Color.LIGHTGRAY); //Sets the Cells fill color
-		setStroke(Color.BLACK); //Sets the Cells stroke color
+	public boolean hadPiece() {
+		return piece != null;
+	}
+
+	public Piece getPiece() {
+		return piece;
+	}
+
+	public void setPiece(Piece piece) {
+		this.piece = piece;
 	}
 	
-	//Boolean method shoot()
-	public boolean shoot() {
-		wasShot = true;
-		setFill(Color.BLACK); //Resets the Cells fill color
-		return false;
-	}
-	
-	//Boolean method shootRed() (Click cell a second time)
-	public boolean shootRed() {
-		wasShot = true;
-		setFill(Color.DARKRED); //Resets the Cells fill color
-		return false;
+	public Cell(boolean light, int x, int y) {
+		setWidth(Board.TILE_SIZE);
+		setHeight(Board.TILE_SIZE);
+		
+		//Relocates all rectangles (Cell parent class) to new x&y coordinates will a size (TILE_SIZE)
+		relocate(x * Board.TILE_SIZE, y * Board.TILE_SIZE);
+		
+		setFill(light ? Color.DARKGREY : Color.ANTIQUEWHITE);
+		setStroke(Color.BLACK);
 	}
 	
 }
