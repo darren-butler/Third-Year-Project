@@ -1,27 +1,23 @@
 package com.networking;
 
-import java.util.List;
 import java.util.Queue;
 
+// polls 2 players from ready queue and starts a game for them
 public class QueueHandler implements Runnable {
+	
+	private static final int GAME_SIZE = 2;
 
-	private List<ClientHandler> clients;
 	private Queue<ClientHandler> ready;
 
-	public QueueHandler(List<ClientHandler> clients, Queue<ClientHandler> ready) {
-		this.clients = clients;
+	public QueueHandler(Queue<ClientHandler> ready) {
 		this.ready = ready;
 	}
 
 	@Override
 	public void run() {
-		// constantly check if any connected clients are ready to play a game
-		while (true) {
-			for (ClientHandler ch : clients) {  
-				if (ch.isReady()) {
-					ready.offer(ch);
-					ch.setReady(false);
-				}
+		while(true) {
+			if(ready.size() >= GAME_SIZE) {
+				new Thread(new GameConnection(ready.poll(), ready.poll())).start();
 			}
 		}
 	}
