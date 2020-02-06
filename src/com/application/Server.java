@@ -19,6 +19,7 @@ public class Server {
 		new Thread(new ConnectionListener(clients)).start();
 
 		// spawn while(true) iterate over clients list to check for ready players to add
+		
 		// to queue
 
 		// spawn thread to poll queue when enough players are in
