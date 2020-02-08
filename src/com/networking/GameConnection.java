@@ -23,4 +23,12 @@ public class GameConnection implements Runnable {
 		// update game state object and tell other player to update theirs
 		// repeat until game ends
 	}
+	
+	//TODO THIS IS TERRIBLE, DO NOT LET THIS GET TO RELEASE!
+	public ClientHandler getPlayer1() {
+		return this.player1;
+	}
+	public ClientHandler getPlayer2() {
+		return this.player2;
+	}
 }

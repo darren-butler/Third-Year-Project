@@ -12,18 +12,19 @@ public class ListHandler implements Runnable {
 	public ListHandler(List<ClientHandler> clients, Queue<ClientHandler> ready) {
 		this.clients = clients;
 		this.ready = ready;
-		
-		System.out.println("Server: " + this.getClass().getName() + " instantiated.");
 	}
 
 	@Override
 	public void run() {
-		System.out.println("Server: " + this.getClass().getName() + " running...");
+		System.out.println("server> checking client list for ready players...");
+
 		while (true) {
-			for (ClientHandler ch : clients) {  
+			for (ClientHandler ch : clients) {
 				if (ch.isReady()) {
 					ready.offer(ch);
 					ch.setReady(false);
+					System.out.println("server> client[" + ch.getId() + "] added to ready queue");
+
 				}
 			}
 		}

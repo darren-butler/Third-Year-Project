@@ -1,8 +1,11 @@
 package com.application;
 
-public class Game {
+import com.networking.ServerHandler;
 
-	public static void main(String[] args) {
+public class Game {
+	
+	public static void main(String[] args) {		
 		
+		new Thread(new ServerHandler()).start();
 	}
 }

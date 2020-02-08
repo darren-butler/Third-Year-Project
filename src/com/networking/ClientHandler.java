@@ -12,37 +12,65 @@ public class ClientHandler implements Runnable {
 	private Socket socket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
-	
+
 	private boolean isReady = false;
-	
-	public ClientHandler(int id, Socket socket) throws IOException {
+
+	private String data = null;
+
+	public ClientHandler(int id, Socket socket) {
 		this.id = id;
 		this.socket = socket;
-		
-		out = new ObjectOutputStream(socket.getOutputStream());
-		out.flush();
-		in = new ObjectInputStream(socket.getInputStream());
-		
-		System.out.println("Server: " + this.getClass().getName() + "[" + id + "] instantiated.");
 	}
 
 	@Override
 	public void run() {
-		// TODO send/receive business logic
-		System.out.println("Server: " + this.getClass().getName() + "[" + id + "] running...");
+
+		try {
+//			out = new ObjectOutputStream(socket.getOutputStream());
+//			out.flush();
+//			in = new ObjectInputStream(socket.getInputStream());
+			
+			out = new ObjectOutputStream(socket.getOutputStream());
+			out.flush();
+			in = new ObjectInputStream(socket.getInputStream());
+
+			sendData("hello client!");
+			
+			data = (String) in.readObject();
+			System.out.println("server> client[" + id + "] says: " + data);
+
+			sendData("shall we play a game?(y/n)");
+			data = (String) in.readObject();
+			System.out.println("server> client[" + id + "] says: " + data);
+			if (data.equals("y")) {
+				sendData("great! putting you in a nice game of chess");
+				// set ready to true;
+			} else {
+				sendData("ok... boring...");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 
-	
-	// TODO send() & receive() methods?
-	
-	// getters & setters
+	public void sendData(String data) throws IOException {
+		out.writeObject(data);
+		out.flush();
+	}
+
+
 	public boolean isReady() {
 		return isReady;
 	}
-
 	public void setReady(boolean isReady) {
 		this.isReady = isReady;
 	}
-	
+
+	public int getId() {
+		return this.id;
+	}
+
 }

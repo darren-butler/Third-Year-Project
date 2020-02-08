@@ -15,9 +15,13 @@ public class QueueHandler implements Runnable {
 
 	@Override
 	public void run() {
+		System.out.println("server> checking queue for ready players...");
 		while(true) {
 			if(ready.size() >= GAME_SIZE) {
-				new Thread(new GameConnection(ready.poll(), ready.poll())).start();
+				
+				GameConnection g = new GameConnection(ready.poll(), ready.poll());
+				System.out.println("server: client[" + g.getPlayer1().getId() + "] & client[" + g.getPlayer2().getId() + "] added to game");
+				new Thread(g).start();
 			}
 		}
 	}
