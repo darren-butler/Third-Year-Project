@@ -25,29 +25,22 @@ public class ClientHandler implements Runnable {
 	@Override
 	public void run() {
 
-		try {
-//			out = new ObjectOutputStream(socket.getOutputStream());
-//			out.flush();
-//			in = new ObjectInputStream(socket.getInputStream());
-			
+		try {			
 			out = new ObjectOutputStream(socket.getOutputStream());
 			out.flush();
 			in = new ObjectInputStream(socket.getInputStream());
-
-			sendData("hello client!");
 			
-			data = (String) in.readObject();
-			System.out.println("server> client[" + id + "] says: " + data);
 
-			sendData("shall we play a game?(y/n)");
-			data = (String) in.readObject();
-			System.out.println("server> client[" + id + "] says: " + data);
-			if (data.equals("y")) {
-				sendData("great! putting you in a nice game of chess");
-				// set ready to true;
-			} else {
-				sendData("ok... boring...");
-			}
+			
+			do {
+				data = recieveData();
+				System.out.println("Client[" + id + "] says: " + data);
+				
+				if(data.equalsIgnoreCase("y")) {
+					isReady = true;
+				}
+			}while(true);
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,6 +52,9 @@ public class ClientHandler implements Runnable {
 	public void sendData(String data) throws IOException {
 		out.writeObject(data);
 		out.flush();
+	}
+	public String recieveData() throws ClassNotFoundException, IOException {
+		return (String) in.readObject(); 
 	}
 
 

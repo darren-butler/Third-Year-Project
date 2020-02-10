@@ -7,54 +7,38 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class ServerHandler implements Runnable {
+public class ServerHandler {
 
 	private static final String IP = "127.0.0.1";
 	private static final int PORT = 10000;
+	private boolean isConnected = false;
 
 	private Socket socket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
-
-	private boolean isConnected = false;
-
-	private Scanner console = new Scanner(System.in);
-
 	private String data;
+	
+	public ServerHandler() throws IOException {
+		socket = new Socket(IP, PORT);
+		
+		out = new ObjectOutputStream(socket.getOutputStream());
+		out.flush();
+		in = new ObjectInputStream(socket.getInputStream());
 
-	@Override
-	public void run() {
+		isConnected = true;
+	}
 
-		try {
-			socket = new Socket(IP, PORT);
-//			out = new ObjectOutputStream(socket.getOutputStream());
-//			out.flush();
-//			in = new ObjectInputStream(socket.getInputStream());
-			
-			out = new ObjectOutputStream(socket.getOutputStream());
-			out.flush();
-			in = new ObjectInputStream(socket.getInputStream());
-
-			isConnected = true;
-			System.out.println("connected to server");
-
-			do {
-				data = (String) in.readObject();
-				System.out.println(data);
-
-				data = console.next();
-				sendData(data);
-			} while (true);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
+	public void connect() {
+		
 	}
 	
 	public void sendData(String data) throws IOException {
 		out.writeObject(data);
 		out.flush();
+	}
+	
+	public String recieveData() throws ClassNotFoundException, IOException {
+		return (String) in.readObject(); 
 	}
 
 	public boolean isConnected() {

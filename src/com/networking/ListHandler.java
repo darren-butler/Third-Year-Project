@@ -19,14 +19,25 @@ public class ListHandler implements Runnable {
 		System.out.println("server> checking client list for ready players...");
 
 		while (true) {
+
+			System.out.println("List<ClientHandler> cliens.size() = " + clients.size());
+			try {
+				Thread.currentThread().sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			for (ClientHandler ch : clients) {
-				if (ch.isReady()) {
+				System.out.println("client[" + ch.getId() + "] ready = " + ch.isReady());
+				if (ch.isReady() && !ready.contains(ch)) {
 					ready.offer(ch);
 					ch.setReady(false);
 					System.out.println("server> client[" + ch.getId() + "] added to ready queue");
 
 				}
 			}
+
 		}
 	}
 

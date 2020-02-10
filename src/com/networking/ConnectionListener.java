@@ -18,7 +18,7 @@ public class ConnectionListener implements Runnable {
 	private int clientID = 0;
 	
 	public ConnectionListener(List<ClientHandler> clients) {
-		this.clients = new ArrayList<ClientHandler>(clients);
+		this.clients = clients;
 	}
 	
 	@Override

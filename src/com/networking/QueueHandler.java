@@ -17,6 +17,13 @@ public class QueueHandler implements Runnable {
 	public void run() {
 		System.out.println("server> checking queue for ready players...");
 		while(true) {
+			System.out.println("Queue<ClientHandler> ready.size() = " + ready.size());
+			 try {
+				Thread.currentThread().sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if(ready.size() >= GAME_SIZE) {
 				
 				GameConnection g = new GameConnection(ready.poll(), ready.poll());
