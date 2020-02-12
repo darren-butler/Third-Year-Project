@@ -11,7 +11,8 @@ import com.networking.*;
 public class Server {
 
 	public static void main(String[] args) {
-
+//		 List<String> list = 
+//		           Collections.synchronizedList(new ArrayList<String>()); 
 		List<ClientHandler> clients = new ArrayList<ClientHandler>(); // list of connected players
 		Queue<ClientHandler> ready = new LinkedList<ClientHandler>(); // queue of players (ready to start a game)
 
@@ -23,7 +24,7 @@ public class Server {
 		// to queue
 
 		// polls n players from queue and starts a game (thread)
-		new Thread(new QueueHandler(ready)).start();
+		//new Thread(new QueueHandler(ready)).start();
 	}
 	
 }

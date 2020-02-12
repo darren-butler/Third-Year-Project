@@ -9,18 +9,20 @@ import java.util.Scanner;
 
 public class ServerHandler {
 
-	private static final String IP = "127.0.0.1";
-	private static final int PORT = 10000;
+//	private static final String IP = "127.0.0.1";
+//	private static final int PORT = 10000;
 	private boolean isConnected = false;
 
 	private Socket socket;
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
-	private String data;
-	
-	public ServerHandler() throws IOException {
-		socket = new Socket(IP, PORT);
-		
+
+	// private String data;
+	private Data data = null;
+
+	public ServerHandler(String ip, int port) throws IOException {
+		socket = new Socket(ip, port);
+
 		out = new ObjectOutputStream(socket.getOutputStream());
 		out.flush();
 		in = new ObjectInputStream(socket.getInputStream());
@@ -29,16 +31,16 @@ public class ServerHandler {
 	}
 
 	public void connect() {
-		
+
 	}
-	
-	public void sendData(String data) throws IOException {
+
+	public void sendData(Data data) throws IOException {
 		out.writeObject(data);
 		out.flush();
 	}
-	
-	public String recieveData() throws ClassNotFoundException, IOException {
-		return (String) in.readObject(); 
+
+	public Data recieveData() throws ClassNotFoundException, IOException {
+		return (Data) in.readObject();
 	}
 
 	public boolean isConnected() {

@@ -31,7 +31,7 @@ public class ConnectionListener implements Runnable {
 				
 				Socket connection = listener.accept();
 				ClientHandler client = new ClientHandler(clientID, connection);
-				System.out.println("server> new client[" + clientID + "] connected from ip: " + connection.getInetAddress());
+				System.out.println("server> new client" + clientID + " connection from ip: " + connection.getInetAddress());
 				clients.add(client);
 				
 				clientID++;

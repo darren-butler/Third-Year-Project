@@ -1,5 +1,6 @@
 package com.networking;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Queue;
 
@@ -19,24 +20,47 @@ public class ListHandler implements Runnable {
 		System.out.println("server> checking client list for ready players...");
 
 		while (true) {
-
-			System.out.println("List<ClientHandler> cliens.size() = " + clients.size());
+			System.out.println("\tdebug> number of connected clients: " + clients.size());
 			try {
-				Thread.currentThread().sleep(5000);
+				Thread.sleep(2000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
-			for (ClientHandler ch : clients) {
-				System.out.println("client[" + ch.getId() + "] ready = " + ch.isReady());
-				if (ch.isReady() && !ready.contains(ch)) {
-					ready.offer(ch);
-					ch.setReady(false);
-					System.out.println("server> client[" + ch.getId() + "] added to ready queue");
-
-				}
+//			for(ClientHandler ch : clients) {
+//				//System.out.println("client" + ch.getId() + " connected=" + ch.isConnected());
+//				if(ch.isConnected()) {
+//					System.out.println("found an alive connection");
+//				} else {
+//					System.out.println("found a dead connection");
+//					clients.remove(ch);
+//				}
+//			}
+			
+			
+			Iterator<ClientHandler> it = clients.iterator();
+			while(it.hasNext()) {
+				ClientHandler ch = it.next();
+			    if (ch.isConnected()) {
+					System.out.println("found an alive connection");
+			    } else {
+					System.out.println("found a dead connection");
+			    	it.remove();
+			    }
 			}
+
+			
+
+			
+//			for (ClientHandler ch : clients) {
+//				System.out.println("client[" + ch.getId() + "] ready = " + ch.isReady());
+//				if (ch.isReady() && !ready.contains(ch)) {
+//					ready.offer(ch);
+//					ch.setReady(false);
+//					System.out.println("server> client[" + ch.getId() + "] added to ready queue");
+//
+//				}
+//			}
 
 		}
 	}

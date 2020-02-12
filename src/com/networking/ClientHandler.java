@@ -13,9 +13,11 @@ public class ClientHandler implements Runnable {
 	private ObjectOutputStream out;
 	private ObjectInputStream in;
 
+	private boolean isConnected = false;
 	private boolean isReady = false;
 
-	private String data = null;
+	// private String data = null;
+	private Data data = null;
 
 	public ClientHandler(int id, Socket socket) {
 		this.id = id;
@@ -25,42 +27,64 @@ public class ClientHandler implements Runnable {
 	@Override
 	public void run() {
 
-		try {			
+		// TODO more graceful implementation - https://stackoverflow.com/a/9459292
+		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 			out.flush();
 			in = new ObjectInputStream(socket.getInputStream());
-			
 
-			
-			do {
+			isConnected = true;
+
+			while (isConnected) {
 				data = recieveData();
-				System.out.println("Client[" + id + "] says: " + data);
-				
-				if(data.equalsIgnoreCase("y")) {
-					isReady = true;
+				System.out.println("\tdebug> client" + id + " >>> [HEADER=" + data.getHeader() + "] [BODY="
+						+ data.getBody() + "]");
+
+				switch (data.getHeader()) {
+				case 2: // 1 = disconnect header
+					out.close();
+					in.close();
+					socket.close();
+					isConnected = false;
+					System.out.println("server> client" + id + " disconnected");
+					return;
+				default:
+					break;
 				}
-			}while(true);
-			
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+				in.close();
+				socket.close();
+				isConnected = false;
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
 
-
-	public void sendData(String data) throws IOException {
+	public void sendData(Data data) throws IOException {
 		out.writeObject(data);
 		out.flush();
 	}
-	public String recieveData() throws ClassNotFoundException, IOException {
-		return (String) in.readObject(); 
+
+	public Data recieveData() throws ClassNotFoundException, IOException {
+		return (Data) in.readObject();
 	}
 
+	public boolean isConnected() {
+		return isConnected;
+	}
 
 	public boolean isReady() {
 		return isReady;
 	}
+
 	public void setReady(boolean isReady) {
 		this.isReady = isReady;
 	}
