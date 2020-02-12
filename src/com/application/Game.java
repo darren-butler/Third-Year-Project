@@ -31,12 +31,23 @@ public class Game {
 				sh = new ServerHandler("127.0.0.1", 10000); //TODO remove hard-code
 				break;
 			case 2:
-				if(sh.isConnected()) {
-					sh.sendData(new Data(2, "disconnect me"));
+				if(sh != null && sh.isConnected() == true) {
+					sh.sendData(new Data(2, null));
 					System.out.println("\tdisconnecting from server...");
 				} else {
 					System.out.println("\terror - server connection not established");
 				}
+				break;
+			case 3:
+				if(sh != null && sh.isConnected() == true) {
+					sh.sendData(new Data(3, null));
+					System.out.println("\tqueueing for game...");
+				} else {
+					System.out.println("\terror - server connection not established");
+				}
+				break;
+			case 0:
+				System.out.println("\tQuitting...");
 				break;
 			default:
 				System.out.println("\terror - invalid input");
@@ -45,7 +56,6 @@ public class Game {
 		} while (option != 0);
 
 		
-		System.out.println("\tQuitting...");
 		console.close();
 	}
 
@@ -53,6 +63,7 @@ public class Game {
 		System.out.println("--MENU--");
 		System.out.println("1. Connect");
 		System.out.println("2. Disconnect");
+		System.out.println("3. Queue");
 		System.out.println("0. Quit");
 		System.out.print(">");
 	}

@@ -37,8 +37,8 @@ public class ClientHandler implements Runnable {
 
 			while (isConnected) {
 				data = recieveData();
-				System.out.println("\tdebug> client" + id + " >>> [HEADER=" + data.getHeader() + "] [BODY="
-						+ data.getBody() + "]");
+				System.out.println(
+						"\tclient[" + id + "] >>> [Header=" + data.getHeader() + "] [BODY=" + data.getBody() + "]");
 
 				switch (data.getHeader()) {
 				case 2: // 1 = disconnect header
@@ -46,10 +46,15 @@ public class ClientHandler implements Runnable {
 					in.close();
 					socket.close();
 					isConnected = false;
-					System.out.println("server> client" + id + " disconnected");
-					return;
+					System.out.println("\tclient[" + id + "] disconnected");
+					break;
+				case 3:
+					isReady = true;
+					break;
 				default:
 					// send Data with an error header to allow the client to fix the problem?
+					System.out.println("\tunknown header, client[" + id + "] >>> [Header=" + data.getHeader()
+							+ "] [BODY=" + data.getBody() + "]");
 					break;
 				}
 			}
