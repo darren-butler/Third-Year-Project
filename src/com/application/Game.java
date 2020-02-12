@@ -33,15 +33,10 @@ public class Game {
 			case 2:
 				if(sh.isConnected()) {
 					sh.sendData(new Data(2, "disconnect me"));
+					System.out.println("\tdisconnecting from server...");
 				} else {
 					System.out.println("\terror - server connection not established");
 				}
-//				if (sh.isConnected()) {
-//					System.out.println("\tJoining queue...");
-//					sh.sendData("y");
-//				} else {
-//					System.out.println("\tError - Not connected to server");
-//				}
 				break;
 			default:
 				System.out.println("\terror - invalid input");

@@ -49,6 +49,7 @@ public class ClientHandler implements Runnable {
 					System.out.println("server> client" + id + " disconnected");
 					return;
 				default:
+					// send Data with an error header to allow the client to fix the problem?
 					break;
 				}
 			}

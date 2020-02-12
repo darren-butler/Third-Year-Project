@@ -30,10 +30,6 @@ public class ServerHandler {
 		isConnected = true;
 	}
 
-	public void connect() {
-
-	}
-
 	public void sendData(Data data) throws IOException {
 		out.writeObject(data);
 		out.flush();

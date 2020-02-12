@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Queue;
 
 // adds ready clients to queue for a new game
+// removes dead connections from client list
 public class ListHandler implements Runnable {
 
 	private List<ClientHandler> clients;
@@ -26,41 +27,17 @@ public class ListHandler implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			
-//			for(ClientHandler ch : clients) {
-//				//System.out.println("client" + ch.getId() + " connected=" + ch.isConnected());
-//				if(ch.isConnected()) {
-//					System.out.println("found an alive connection");
-//				} else {
-//					System.out.println("found a dead connection");
-//					clients.remove(ch);
-//				}
-//			}
-			
-			
+
 			Iterator<ClientHandler> it = clients.iterator();
-			while(it.hasNext()) {
+			while (it.hasNext()) {
 				ClientHandler ch = it.next();
-			    if (ch.isConnected()) {
-					System.out.println("found an alive connection");
-			    } else {
-					System.out.println("found a dead connection");
-			    	it.remove();
-			    }
+				if (ch.isConnected()) {
+					// check if (ready to join queue)
+					// -> add them to queue
+				} else {
+					it.remove();
+				}
 			}
-
-			
-
-			
-//			for (ClientHandler ch : clients) {
-//				System.out.println("client[" + ch.getId() + "] ready = " + ch.isReady());
-//				if (ch.isReady() && !ready.contains(ch)) {
-//					ready.offer(ch);
-//					ch.setReady(false);
-//					System.out.println("server> client[" + ch.getId() + "] added to ready queue");
-//
-//				}
-//			}
 
 		}
 	}
