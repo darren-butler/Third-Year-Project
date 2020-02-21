@@ -33,6 +33,8 @@ public class Piece extends StackPane {
 	//Two parameter constructor 
 	public Piece(int x, int y) {
 		
+		movePiece(x, y);
+		
 		//Creates the Circle Piece and sets its color
 		Circle circle = new Circle(x , y, radius);
 		circle.setFill(Color.YELLOW);
@@ -55,13 +57,7 @@ public class Piece extends StackPane {
 		setOnMouseDragged(e -> {
 			relocate(e.getSceneX() - mouseX + oldX, e.getSceneY() - mouseY + oldY);
 		});
-	}
-	
-	public Piece makeGamePiece(int x, int y) {
-		Piece piece = new Piece(x, y);
-		
-		return piece;
-	}
+	}	
 
 	//Will move piece with the distance of TILE_SIZE
 	public void movePiece(int x, int y) {

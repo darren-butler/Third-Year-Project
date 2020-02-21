@@ -6,14 +6,14 @@ public class MoveResult {
 	private ActionType type;
 	private Piece piece;
 	
-	//get Piece method
-	public Piece getPiece() {
-		return piece;
-	}
-
 	//get ActionType method
 	public ActionType getType() {
 		return type;
+	}
+	
+	//get Piece method
+	public Piece getPiece() {
+		return piece;
 	}
 	
 	//One parameter constructor
