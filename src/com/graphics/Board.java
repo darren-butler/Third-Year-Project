@@ -33,8 +33,13 @@ public class Board extends Parent {
 				Piece piece = null;
 				//piece = makeGamePiece(x, y);
 				
-				//Checkered Effect
-				if ((x + y) % 2 != 0) {
+				//Checkered Effect top 3 rows spawns pieces
+				if (y <= 2 && (x + y) % 2 != 0) {
+                    piece = makeGamePiece(x, y);
+                }
+				
+				//Checkered Effect bottom 3 rows spawns pieces
+				if (y >= 9 && (x + y) % 2 != 0) {
                     piece = makeGamePiece(x, y);
                 }
 				
@@ -71,10 +76,9 @@ public class Board extends Parent {
 			
 			MoveResult result;
 			
-			if (newX < 0 || newY < 0 || newX >= Board.WIDTH || newY >= Board.HEIGHT) {
+			if (newX < 0 || newY < 0 || newX >= WIDTH || newY >= HEIGHT) {
 				result = new MoveResult(ActionType.NONE);
 			} else {
-				//CHANGE TO TRYMOVE PIECE 
 				result = tryMove(piece, newX, newY);
 			}
 			
@@ -103,23 +107,25 @@ public class Board extends Parent {
 	private MoveResult tryMove(Piece piece, int newX, int newY) {
 		
 		//Creates Checkers board effect
-		if (board[newX][newY].hasPiece() || (newX + newY) % 2 == 0) {
-			return new  MoveResult(ActionType.NONE);
+		if (board[newX][newY].hasPiece()) {
+			return new MoveResult(ActionType.NONE);
 		}
 		
 		int x0 = toBoard(piece.getOldX());
 		int y0 = toBoard(piece.getOldY());
 		
-		if (Math.abs(newX - x0) == 1 && newY - y0 == piece.getType().moveDir) {
+		if (Math.abs(newX - x0) == 1 && Math.abs(newY -y0) == 1 /*newY - y0 == piece.getType().moveDir*/) {
 			return new MoveResult(ActionType.MOVE);
-		} else if (Math.abs(newX - x0) == 2 && newY -y0 == piece.getType().moveDir * 2) {
+		} else if (Math.abs(newX - x0) == 2 && newY - y0 == piece.getType().moveDir * 3) {
 			
 			int x1 = x0 + (newX - x0) / 2;
 			int y1 = y0 + (newY - y0) / 2;
 			
+			/*
 			if (board[x1][y1].hasPiece() && board[x1][y1].getPiece().getType() != piece.getType()) {
 				return new MoveResult(ActionType.ATTACK, board[x1][y1].getPiece());
 			}
+			*/
 		}
 		//Returns NONE ActionType
 		return new MoveResult(ActionType.NONE);
