@@ -8,12 +8,13 @@ import com.networking.ServerHandler;
 
 public class Game {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		Scanner console = new Scanner(System.in);
 		int option = -1;
-		String data = null;
+		// String data = null;
 		ServerHandler sh = null;
+		Data data;
 
 		do {
 			printMenu();
@@ -28,10 +29,10 @@ public class Game {
 //				
 				System.out.println("\n\tconnecting to server...");
 //				sh = new ServerHandler(ip, port);
-				sh = new ServerHandler("127.0.0.1", 10000); //TODO remove hard-code
+				sh = new ServerHandler("127.0.0.1", 10000); // TODO remove hard-code
 				break;
 			case 2:
-				if(sh != null && sh.isConnected() == true) {
+				if (sh != null && sh.isConnected() == true) {
 					sh.sendData(new Data(2, null));
 					System.out.println("\tdisconnecting from server...");
 				} else {
@@ -39,9 +40,26 @@ public class Game {
 				}
 				break;
 			case 3:
-				if(sh != null && sh.isConnected() == true) {
+				if (sh != null && sh.isConnected() == true) {
 					sh.sendData(new Data(3, null));
 					System.out.println("\tqueueing for game...");
+
+					data = sh.recieveData();
+					if (data.getHeader() == -1) {// new game header = -1
+						System.out.println("New Game String: " + data.getBody());
+
+						do { // game loop
+							// wait for server to send data
+							data = sh.recieveData();
+							// prompt client to modify string
+							System.out.println("\t\tAdd to the string: ");
+							data.setBody(data.getBody() + console.next());
+							// send string to server
+							sh.sendData(data);
+							
+							// client receives, sends, receives // server sends, receives, sends
+						} while (true);
+					}
 				} else {
 					System.out.println("\terror - server connection not established");
 				}
@@ -52,10 +70,9 @@ public class Game {
 			default:
 				System.out.println("\terror - invalid input");
 			}
-			
+
 		} while (option != 0);
 
-		
 		console.close();
 	}
 
