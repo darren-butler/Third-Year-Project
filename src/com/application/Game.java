@@ -16,6 +16,7 @@ public class Game {
 		ServerHandler sh = null;
 		Data data;
 
+		
 		do {
 			printMenu();
 			option = console.nextInt();
