@@ -3,43 +3,51 @@ package com.networking;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Queue;
+import java.util.ArrayList;
+import java.util.List;
 
+// awaits incoming connections and spawns them a thread for communication
 public class ConnectionListener implements Runnable {
 
 	private final int PORT = 10000;
 	private final int BACKLOG = 10;
 	
-	private Queue<Client> clients;
+	private List<ClientHandler> clients;
+	
 	private ServerSocket listener;
 	private int clientID = 0;
 	
-	public ConnectionListener(Queue<Client> clients) {
+	public ConnectionListener(List<ClientHandler> clients) {
 		this.clients = clients;
-		System.out.println("[Server]> spawning connection listener thread...");
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 =======
 	
 >>>>>>> parent of 2f9cd40... conflict resolution attemp
+=======
+	
+	
+>>>>>>> parent of b378f6c... Merge branch 'develop' into feature-darren
 	@Override
-	public void run() {	
-		try {
+	public void run() {
+		 try {
 			listener = new ServerSocket(PORT, BACKLOG);
-			System.out.println("[Server]> listening for new connections...");
+
 			while(true) {
-				Socket connection = listener.accept();			
+				
+				Socket connection = listener.accept();
+				ClientHandler client = new ClientHandler(clientID, connection);
+				System.out.println("\tnew client[" + clientID + "] connected from ip: " + connection.getInetAddress());
+				clients.add(client);
+				
 				clientID++;
 				
-				clients.add(new Client(connection, clientID));
-				System.out.println("[Server]> new client #" + clientID + ", connected from ip:" + connection.getInetAddress());
+				new Thread(client).start();
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
