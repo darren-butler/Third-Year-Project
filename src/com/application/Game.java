@@ -1,15 +1,19 @@
 package com.application;
 
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
 import java.util.Scanner;
-
-import com.networking.Data;
-import com.networking.ServerHandler;
 
 public class Game {
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
-
+	public static void main(String[] args) throws Throwable {
+		
+		final InetAddress IP = InetAddress.getByName("127.0.0.1");
+		final int PORT = 10000;
+		
 		Scanner console = new Scanner(System.in);
 		int option = -1;
 		// String data = null;
@@ -75,14 +79,12 @@ public class Game {
 		} while (option != 0);
 
 		console.close();
-	}
 
-	static void printMenu() {
-		System.out.println("--MENU--");
-		System.out.println("1. Connect");
-		System.out.println("2. Disconnect");
-		System.out.println("3. Queue");
-		System.out.println("0. Quit");
-		System.out.print(">");
+	}
+	
+	private static void sendString(String str, ObjectOutputStream out) throws IOException {
+		out.writeObject(str);
+		out.flush();
 	}
 }
+
