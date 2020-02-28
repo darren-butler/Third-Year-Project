@@ -11,6 +11,9 @@ public class Game {
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		Scanner console = new Scanner(System.in);
+		int option = -1;
+		ServerHandler sh = null;
+		Data data = null;
 
 		do {
 			printMenu();

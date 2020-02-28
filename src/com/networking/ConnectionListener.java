@@ -20,16 +20,7 @@ public class ConnectionListener implements Runnable {
 	public ConnectionListener(List<ClientHandler> clients) {
 		this.clients = clients;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> parent of 2f9cd40... conflict resolution attemp
-=======
-	
-	
->>>>>>> parent of b378f6c... Merge branch 'develop' into feature-darren
 	@Override
 	public void run() {
 		 try {
