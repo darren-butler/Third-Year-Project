@@ -10,15 +10,18 @@ import javafx.event.EventHandler;
 public class Board extends Parent {
 
 	public static final int TILE_SIZE = 50;
-	public static final int WIDTH = 20;		//Originally: 20
-	public static final int HEIGHT = 12;	//Originally: 12
+	public static final int WIDTH = 2;		//Originally: 20
+	public static final int HEIGHT = 2;	//Originally: 12
 	
 	private Cell[][] board = new Cell[WIDTH][HEIGHT];
 	
 	public static Group cellGroup = new Group();
 	public static Group pieceGroup = new Group();
 	
+	int[][] boardState = new int[2][2];
+	
 	public Board(EventHandler<? super MouseEvent> handler) {
+		Piece piece = null;
 		
 		for (int y = 0; y < HEIGHT; y++) {
 			for (int x = 0; x < WIDTH; x++) {
@@ -30,9 +33,10 @@ public class Board extends Parent {
 				cellGroup.getChildren().add(cell);
 				
 				//== EYE--<0>--ON ==//
-				Piece piece = null;
 				//piece = makeGamePiece(x, y);
 				
+				
+				/*
 				//Checkered Effect top 3 rows spawns pieces
 				if (y <= 2 && (x + y) % 2 != 0) {
                     piece = makeGamePiece(x, y);
@@ -42,22 +46,46 @@ public class Board extends Parent {
 				if (y >= 9 && (x + y) % 2 != 0) {
                     piece = makeGamePiece(x, y);
                 }
+                */
 				
+				/*
 				if (piece != null) {
 					cell.setPiece(piece);
 					pieceGroup.getChildren().add(piece);
 				}
+				*/
 				
 				/* USED FOR DEBUGGING
 				if (cell.hasPiece() == true) {
 					cell.setFill(Color.BLUE);
 				}
 				*/
-
+				
 			}
 		}
+		piece = makeGamePiece(0,0);
+		pieceGroup.getChildren().add(piece);
 		//Adds cellGroup to the Parent 
 		getChildren().addAll(cellGroup, pieceGroup);
+		
+		System.out.println("cell count: " + cellGroup.getChildren().size());
+		System.out.println("piece count: " + pieceGroup.getChildren().size());
+		
+		for(int i = 0; i < cellGroup.getChildren().size(); i++) {
+			if(cellGroup.getChildren().isEmpty()) {
+				System.out.println("has a piece!");
+			} else {
+				System.out.println("no piece!");
+			}
+		}
+		
+		
+
+//		for(int i =0; i < cellGroup.getChildren().size(); i++) {
+//			System.out.println("cell[" + i + "] has peice=" +  pieceGroup.getChildren().get(i));
+//		}
+		
+		
 		
 	}
 	
