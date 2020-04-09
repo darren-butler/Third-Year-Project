@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import com.graphics.Board;
 import com.graphics.Cell;
-import com.graphics.GameController;
 import com.networking.Data;
 import com.networking.ServerHandler;
 
@@ -17,9 +16,9 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class Game extends Application {
-	
+
 	static Board theBoard;
-	
+
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		Scanner console = new Scanner(System.in);
@@ -56,20 +55,20 @@ public class Game extends Application {
 					System.out.println("\tqueueing for game...");
 
 					data = sh.recieveData();
-					if (data.getHeader() == -1) {// new game header = -1
-						System.out.println("New Game String: " + data.getBody());
 
-						do { // game loop
-							// wait for server to send data
-							data = sh.recieveData();
-							// prompt client to modify string
-							System.out.println("\t\tAdd to the string: ");
-							data.setBody(data.getBody() + console.next());
-							// send string to server
+					if (data.getHeader() == -1) {// new game header = -1
+
+						while (true) {
+							System.out.println("Other palyer says: " + data.getBody());
+
+							System.out.print("response:");
+							data.setBody(console.next());
 							sh.sendData(data);
-							
-							// client receives, sends, receives // server sends, receives, sends
-						} while (true);
+
+							data = sh.recieveData();
+
+						}
+
 					}
 				} else {
 					System.out.println("\terror - server connection not established");
@@ -78,7 +77,7 @@ public class Game extends Application {
 			case 5:
 				launch(args);
 				break;
-				
+
 			case 0:
 				System.out.println("\tQuitting...");
 				break;
@@ -99,23 +98,23 @@ public class Game extends Application {
 		System.out.println("0. Quit");
 		System.out.print(">");
 	}
-	
+
 	/******* == GAME RENDERER FUNCTION == *******/
 	private Parent gameRender() {
 		BorderPane root = new BorderPane();
 		root.setPrefSize(Board.WIDTH * Board.TILE_SIZE, Board.HEIGHT * Board.TILE_SIZE);
 		root.getChildren().addAll(Board.cellGroup, Board.pieceGroup);
-		
+
 		theBoard = new Board(event -> {
 			Cell c = (Cell) event.getSource();
-			
+
 			c.setFill(Color.BLACK);
-			
+
 		});
-		
-		root.setTop(theBoard);		
-		
-		return root;		
+
+		root.setTop(theBoard);
+
+		return root;
 	}
 
 	@Override
@@ -123,7 +122,7 @@ public class Game extends Application {
 		Scene scene = new Scene(gameRender(), 991, 800);
 		stage.setTitle("The Game");
 		stage.setScene(scene);
-		stage.show();		
-		
+		stage.show();
+
 	}
 }

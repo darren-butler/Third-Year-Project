@@ -2,8 +2,9 @@ package com.networking;
 
 import java.io.Serializable;
 
-public class Data implements Serializable {
+public class Data implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
 	private int header;
 	private String body;
 	
@@ -24,5 +25,11 @@ public class Data implements Serializable {
 	public void setBody(String body) {
 		this.body = body;
 	}
+
+	@Override
+	public String toString() {
+		return "Data [header=" + header + ", body=" + body + "]";
+	}
+	
 
 }

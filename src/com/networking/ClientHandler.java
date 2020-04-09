@@ -17,6 +17,15 @@ public class ClientHandler implements Runnable {
 	private boolean isReady = false;
 
 	// private String data = null;
+	private GameConnection gameConnection;
+	public GameConnection getGameConnection() {
+		return gameConnection;
+	}
+
+	public void setGameConnection(GameConnection gameConnection) {
+		this.gameConnection = gameConnection;
+	}
+
 	private Data data = null;
 
 	public ClientHandler(int id, Socket socket) {
@@ -51,6 +60,9 @@ public class ClientHandler implements Runnable {
 				case 3:
 					isReady = true;
 					break;
+				case -1: 
+					gameConnection.setData(data);
+					break;
 				default:
 					// send Data with an error header to allow the client to fix the problem?
 					System.out.println("\tunknown header, client[" + id + "] >>> [Header=" + data.getHeader()
@@ -73,6 +85,10 @@ public class ClientHandler implements Runnable {
 		}
 
 	}
+	
+	public Data getData() {
+		return data;
+	}
 
 	public void sendData(Data data) throws IOException {
 		out.writeObject(data);
@@ -81,6 +97,10 @@ public class ClientHandler implements Runnable {
 
 	public Data recieveData() throws ClassNotFoundException, IOException {
 		return (Data) in.readObject();
+	}
+	
+	public String recieveString() throws ClassNotFoundException, IOException {
+		return (String) in.readObject();
 	}
 
 	public boolean isConnected() {
