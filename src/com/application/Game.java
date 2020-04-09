@@ -6,7 +6,7 @@ import com.networking.Data;
 import com.networking.ServerHandler;
 
 public class Game {
-	
+
 	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		Scanner console = new Scanner(System.in);
@@ -43,26 +43,25 @@ public class Game {
 					System.out.println("\tqueueing for game...");
 
 					data = sh.recieveData();
-					if (data.getHeader() == -1) {// new game header = -1
-						System.out.println("New Game String: " + data.getBody());
 
-						do { // game loop
-							// wait for server to send data
-							data = sh.recieveData();
-							// prompt client to modify string
-							System.out.println("\t\tAdd to the string: ");
-							data.setBody(data.getBody() + console.next());
-							// send string to server
+					if (data.getHeader() == -1) {// new game header = -1
+
+						while (true) {
+							System.out.println("Other palyer says: " + data.getBody());
+
+							System.out.print("response:");
+							data.setBody(console.next());
 							sh.sendData(data);
-							
-							// client receives, sends, receives // server sends, receives, sends
-						} while (true);
+
+							data = sh.recieveData();
+
+						}
+
 					}
 				} else {
 					System.out.println("\terror - server connection not established");
 				}
 				break;
-				
 			case 0:
 				System.out.println("\tQuitting...");
 				break;
@@ -83,5 +82,6 @@ public class Game {
 		System.out.println("0. Quit");
 		System.out.print(">");
 	}
-	
 }
+
+

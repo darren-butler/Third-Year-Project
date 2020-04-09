@@ -18,7 +18,7 @@ public class ServerHandler {
 	private ObjectInputStream in;
 
 	// private String data;
-	private Data data = null;
+	//private Data data = null;
 
 	public ServerHandler(String ip, int port) throws IOException {
 		socket = new Socket(ip, port);
@@ -41,6 +41,11 @@ public class ServerHandler {
 
 	public boolean isConnected() {
 		return this.isConnected;
+	}
+	
+	public void sendString(String str) throws IOException {
+		out.writeObject(str);
+		out.flush();
 	}
 
 }
