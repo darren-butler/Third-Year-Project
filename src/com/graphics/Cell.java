@@ -1,6 +1,6 @@
 package com.graphics;
 
-public enum Seed {
+public enum Cell {
 	// Enumerations for the seeds and cells contents.
 	EMPTY, X, O
 }

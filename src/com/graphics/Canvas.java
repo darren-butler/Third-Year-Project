@@ -6,13 +6,17 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
-public class DrawCanvas extends JPanel {
-
-	//GameMain game = GameMain.getInstance();
+// draws all graphics onto the canvas within the JFrame
+public class Canvas extends JPanel{
 	
+	private Cell[][] board;
+	
+	public Canvas(Cell[][] board) {
+		this.board = board;		
+	}
+
 	@Override
     public void paintComponent(Graphics g) {  // invoke via repaint()
-		System.out.println("CallING Paint!!");
        super.paintComponent(g);    // fill background
        setBackground(Color.WHITE); // set its background color
 
@@ -36,13 +40,13 @@ public class DrawCanvas extends JPanel {
           for (int col = 0; col < Utilities.COLS; ++col) {
              int x1 = col * Utilities.CELL_SIZE + Utilities.CELL_PADDING;
              int y1 = row * Utilities.CELL_SIZE + Utilities.CELL_PADDING;
-             if (GameMain.board[row][col] == Seed.X) {
+             if (board[row][col] == Cell.X) {
                 g2d.setColor(Color.RED);
                 int x2 = (col + 1) * Utilities.CELL_SIZE - Utilities.CELL_PADDING;
                 int y2 = (row + 1) * Utilities.CELL_SIZE - Utilities.CELL_PADDING;
                 g2d.drawLine(x1, y1, x2, y2);
                 g2d.drawLine(x2, y1, x1, y2);
-             } else if (GameMain.board[row][col] == Seed.O) {
+             } else if (board[row][col] == Cell.O) {
                 g2d.setColor(Color.BLUE);
                 g2d.drawOval(x1, y1, Utilities.SYMBOL_SIZE, Utilities.SYMBOL_SIZE);
              }

@@ -2,6 +2,7 @@ package com.application;
 
 import java.io.IOException;
 import java.util.Scanner;
+import com.graphics.GameController;
 import com.networking.Data;
 import com.networking.ServerHandler;
 
@@ -43,9 +44,10 @@ public class Game {
 					System.out.println("\tqueueing for game...");
 
 					data = sh.recieveData();
+					GameController gc = new GameController();
 
 					if (data.getHeader() == -1) {// new game header = -1
-
+						
 						while (true) {
 							System.out.println("Other palyer says: " + data.getBody());
 
