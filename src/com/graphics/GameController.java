@@ -3,13 +3,9 @@ package com.graphics;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 public class GameController extends JFrame {
 
@@ -17,7 +13,7 @@ public class GameController extends JFrame {
 	private Canvas canvas;
 	private Cell player = Cell.X;
 	private boolean turn = true;
-	
+
 	public GameController() {
 
 		board = new Cell[Utilities.ROWS][Utilities.COLS];
@@ -39,29 +35,40 @@ public class GameController extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) { // mouse-clicked handler
 
-				int mouseX = e.getX();
-				int mouseY = e.getY();
-				int rowSelected = mouseY / Utilities.CELL_SIZE;
-				int colSelected = mouseX / Utilities.CELL_SIZE;
+				if (turn) {
 
-				while(turn) {
-					if (rowSelected >= 0 && rowSelected < Utilities.ROWS && colSelected >= 0 && colSelected < Utilities.COLS
-							&& board[rowSelected][colSelected] == Cell.EMPTY) {
+					int mouseX = e.getX();
+					int mouseY = e.getY();
+					int rowSelected = mouseY / Utilities.CELL_SIZE;
+					int colSelected = mouseX / Utilities.CELL_SIZE;
+
+					if (rowSelected >= 0 && rowSelected < Utilities.ROWS && colSelected >= 0
+							&& colSelected < Utilities.COLS && board[rowSelected][colSelected] == Cell.EMPTY) {
 						board[rowSelected][colSelected] = player;
 						// update state
 						// Switch player
 						// currentPlayer = (currentPlayer == Seed.X) ? Seed.O : Seed.X;
 					}
 					repaint();
-					turn = !turn;
+					System.out.println("Im here clicking....");
+					// turn = !turn;
+					turn = false;
 				}
 
 			}
 		});
-		
+
+		System.out.println("Im here in the Constructor..");
 
 	}
-	
+
+	public boolean isTurn() {
+		return turn;
+	}
+
+	public void setTurn(boolean turn) {
+		this.turn = turn;
+	}
 
 	private void initGame() {
 		for (int row = 0; row < Utilities.ROWS; ++row) {
@@ -71,7 +78,7 @@ public class GameController extends JFrame {
 		}
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		GameController gc = new GameController();
 	}
 }
