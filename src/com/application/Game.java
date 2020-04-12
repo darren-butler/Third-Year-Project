@@ -44,15 +44,17 @@ public class Game {
 					System.out.println("\tqueueing for game...");
 
 					data = sh.recieveData();
-					GameController gc = new GameController();
 
 					if (data.getHeader() == -1) {// new game header = -1
-						
-						while (true) {
-							System.out.println("Other palyer says: " + data.getBody());
+						GameController gameController = new GameController();
 
-							System.out.print("response:");
-							data.setBody(console.next());
+						while (true) {
+							data.setBoard(gameController.getBoard());
+							System.out.println("Game Data: " + data.toString());
+
+							while(gameController.isTurn()) {
+								data.setBoard(gameController.getBoard());
+							}
 							sh.sendData(data);
 
 							data = sh.recieveData();

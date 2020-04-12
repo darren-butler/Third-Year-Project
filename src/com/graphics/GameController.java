@@ -50,8 +50,7 @@ public class GameController extends JFrame {
 						// currentPlayer = (currentPlayer == Seed.X) ? Seed.O : Seed.X;
 					}
 					repaint();
-					System.out.println("Im here clicking....");
-					// turn = !turn;
+					//System.out.println(rowSelected + " " + colSelected);
 					turn = false;
 				}
 
@@ -70,6 +69,14 @@ public class GameController extends JFrame {
 		this.turn = turn;
 	}
 
+	public Cell[][] getBoard() {
+		return board;
+	}
+
+	public void setBoard(Cell[][] board) {
+		this.board = board;
+	}
+
 	private void initGame() {
 		for (int row = 0; row < Utilities.ROWS; ++row) {
 			for (int col = 0; col < Utilities.COLS; ++col) {
@@ -80,5 +87,6 @@ public class GameController extends JFrame {
 
 	public static void main(String[] args) throws InterruptedException {
 		GameController gc = new GameController();
+		
 	}
 }

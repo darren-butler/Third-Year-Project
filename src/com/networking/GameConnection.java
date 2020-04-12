@@ -23,7 +23,7 @@ public class GameConnection implements Runnable {
 	public void run() {
 
 		try {
-			data = new Data(-1, "init");
+			data = new Data(-1, null);
 
 			while (true) {
 				player1.sendData(data);
