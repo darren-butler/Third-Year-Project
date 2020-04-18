@@ -14,6 +14,8 @@ public class Game {
 		int option = -1;
 		ServerHandler sh = null;
 		Data data = null;
+		
+		int x, y;
 
 		do {
 			printMenu();
@@ -44,24 +46,37 @@ public class Game {
 					System.out.println("\tqueueing for game...");
 
 					data = sh.recieveData();
+					XO game = new XO();
+					
+					game.setBoard(data.getBoard());
+					game.setPlayer(data.getPlayer());
 
-					if (data.getHeader() == -1) {// new game header = -1
-						GameController gameController = new GameController();
-
-						while (true) {
-							data.setBoard(gameController.getBoard());
-							System.out.println("Game Data: " + data.toString());
-
-							while(gameController.isTurn()) {
-								data.setBoard(gameController.getBoard());
-							}
-							sh.sendData(data);
-
-							data = sh.recieveData();
-
-						}
-
+					while(true) {
+						data = sh.recieveData();
+						game.setBoard(data.getBoard());
+						game.printBoard();
+						
+						do {
+							System.out.print("move: ");
+							String str = console.next();
+							x = Integer.parseInt(String.valueOf(str.charAt(0)));
+							y = Integer.parseInt(String.valueOf(str.charAt(1)));
+							
+						}while (!game.isValidMove(x, y));
+					
+						
+						game.move(x, y);
+						game.printBoard();
+						
+						data.setBoard(game.getBoard());
+						data.setHeader(0);
+						
+						sh.sendData(data);
+						
 					}
+
+	
+					
 				} else {
 					System.out.println("\terror - server connection not established");
 				}

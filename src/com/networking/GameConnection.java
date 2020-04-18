@@ -2,6 +2,8 @@ package com.networking;
 
 import java.io.IOException;
 
+import com.application.XO;
+
 // this class should be instantiated and added to thread pool / executor service in server
 // or it could spawn a thread, run the game, then die a death
 // when run() finished thread should die off? and be GC'd as it is out of scope
@@ -23,35 +25,49 @@ public class GameConnection implements Runnable {
 	public void run() {
 
 		try {
-			data = new Data(-1, null);
+			XO game = new XO();
+			
+			data = new Data();
+			data.setBoard(game.getBoard());
+			
+			data.setPlayer(1);
+			player1.sendData(data);
+			data.setPlayer(-1);
+			player2.sendData(data);
 
-			while (true) {
+			
+			while(true) {
 				player1.sendData(data);
+				
 				data = null;
-
-				while (data == null) {
+				player1.setData(null);
+				do {
+					data = player1.getData();
+					//System.out.println(this + " waiting...");
 					Thread.sleep(1000);
-					System.out.println("waiting on player 1...");
-				}
-
-				data = player1.getData();
-
+				}while(data == null);
+				
+				game.setBoard(data.getBoard());
+				data.setBoard(game.getBoard());
+				
+				
 				player2.sendData(data);
+				
 				data = null;
-
-				while (data == null) {
+				player2.setData(null);
+				do {
+					data = player2.getData();
+					//System.out.println(this + " waiting...");
 					Thread.sleep(1000);
-					System.out.println("waiting on player 2...");
 
-				}
-
-				data = player2.getData();
+				}while(data == null);
+				
+				
+				game.setBoard(data.getBoard());
+				data.setBoard(game.getBoard());
 			}
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

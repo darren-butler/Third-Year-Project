@@ -8,6 +8,10 @@ import java.net.Socket;
 // facilitates communication between server and an individual client
 public class ClientHandler implements Runnable {
 
+	public void setData(Data data) {
+		this.data = data;
+	}
+
 	private int id;
 	private Socket socket;
 	private ObjectOutputStream out;

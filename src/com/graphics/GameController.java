@@ -7,6 +7,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JFrame;
 
+import com.networking.Data;
+
 public class GameController extends JFrame {
 
 	private Cell[][] board;
@@ -35,8 +37,7 @@ public class GameController extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) { // mouse-clicked handler
 
-				if (turn) {
-
+				if(turn) {
 					int mouseX = e.getX();
 					int mouseY = e.getY();
 					int rowSelected = mouseY / Utilities.CELL_SIZE;
@@ -49,16 +50,15 @@ public class GameController extends JFrame {
 						// Switch player
 						// currentPlayer = (currentPlayer == Seed.X) ? Seed.O : Seed.X;
 					}
-					repaint();
-					//System.out.println(rowSelected + " " + colSelected);
+					repaint();		
 					turn = false;
+					System.out.println(rowSelected + " " + colSelected);
+		
 				}
 
 			}
+		
 		});
-
-		System.out.println("Im here in the Constructor..");
-
 	}
 
 	public boolean isTurn() {
@@ -84,9 +84,39 @@ public class GameController extends JFrame {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		String str = "";
+
+		for (int i = 0; i < Utilities.ROWS; i++) {
+			str += '|';
+			for (int j = 0; j < Utilities.COLS; j++) {
+				str += board[i][j].name() + ",";
+			}
+			str += "|\n";
+		}
+
+		return str;
+	}
 
 	public static void main(String[] args) throws InterruptedException {
-		GameController gc = new GameController();
+//		GameController gc = new GameController();
+//		
+//		Data myData = new Data();
+//		
+//		System.out.println(myData.toString());
 		
+		System.out.println("  0  1  2");
+		System.out.println("0[ ][O][ ]");
+		System.out.println("1[X][X][X]");
+		System.out.println("2[ ][ ][O]");
+
+		
+
+
+
+		//gc.setBoard(data.)
+
 	}
 }

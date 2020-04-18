@@ -2,6 +2,7 @@ package com.networking;
 
 import java.io.Serializable;
 
+import com.application.XO;
 import com.graphics.Cell;
 import com.graphics.Utilities;
 
@@ -10,14 +11,20 @@ public class Data implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int header;
 	private String body;
-	private Cell[][] board;
-
-	public Cell[][] getBoard() {
-		return board;
+	private int[][] board;
+	private int player;
+	
+	public Data() {
+		this.header = -1;
+		this.body = null;
 	}
 
-	public void setBoard(Cell[][] board) {
-		this.board = board;
+	public int getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(int player) {
+		this.player = player;
 	}
 
 	public Data(int header, String body) {
@@ -41,19 +48,13 @@ public class Data implements Serializable {
 		this.body = body;
 	}
 
-	@Override
-	public String toString() {
-		String str = "Data [header=" + header + ", body=" + body + "]\n";
-
-		for (int i = 0; i < Utilities.ROWS; i++) {
-			str += '|';
-			for (int j = 0; j < Utilities.COLS; j++) {
-				str += board[i][j].name() + ",";
-			}
-			str += "|\n";
-		}
-
-		return str;
+	public int[][] getBoard() {
+		return board;
 	}
+
+	public void setBoard(int[][] board) {
+		this.board = board;
+	}
+	
 
 }
