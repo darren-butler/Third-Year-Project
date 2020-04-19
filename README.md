@@ -8,9 +8,9 @@ The program created is a multiplayer networked game of Tic-Tac-Toe, using the Ja
 ## Functionality
 
 __Questions:__
-- __1) What does it do?__
-- __2) How do I (USER) use it?__
-- __3) What do I (USER) see?__
+- __What does it do?__
+- __How do I (USER) use it?__
+- __What do I (USER) see?__
 
 The programs main function is to allow N-number of players to connect to a server in which they can join a game of Tic-Tac-Toe with another player also connected to the server.  This is acheived in a number of steps
 - Server (Host) is turned on.
@@ -21,9 +21,9 @@ Each player will see a gameboard that is represented by a 3 row X 3 column grid.
 
 ## System Requirements
 
-1). Java 8 Language
-2). Server (Cloud)
-3). Client(s) (minimum of 2)
+- Java 8 Language
+- Server (Cloud)
+- Client(s) (minimum of 2)
 
 ## Technology Used and Why
 
