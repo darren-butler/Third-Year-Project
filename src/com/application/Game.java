@@ -23,14 +23,14 @@ public class Game {
 
 			switch (option) {
 			case 1:
-//				System.out.print("\tip: ");
-//				String ip = console.next();
+				System.out.print("\tip: ");
+				String ip = console.next();
 //				System.out.print("\tport: ");
 //				int port = console.nextInt();
 				
 				System.out.println("\n\tconnecting to server...");
-				//sh = new ServerHandler(ip, port);
-				sh = new ServerHandler("127.0.0.1", 10000); // TODO remove hard-code
+				sh = new ServerHandler(ip, 10000);
+				//sh = new ServerHandler("127.0.0.1", 10000); // TODO remove hard-code
 				break;
 			case 2:
 				if (sh != null && sh.isConnected() == true) {
