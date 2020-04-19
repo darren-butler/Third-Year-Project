@@ -53,12 +53,14 @@ public class Game {
 
 					while(true) {
 						data = sh.recieveData();
+// TODO: double check if(game won) -> used to be here
+						game.setBoard(data.getBoard());
+						game.printBoard();
+						
 						if(data.getHeader() == 10) {
 							System.out.println(data.getBody());
 							break;
 						}
-						game.setBoard(data.getBoard());
-						game.printBoard();
 						
 						do {
 							System.out.print("move: ");
