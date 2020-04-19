@@ -44,7 +44,15 @@ The project is designed using a basic Java Project created in Eclipse Oxygen. Th
 - com.networking 
   - This package contains the classes used to handle the networking side of the program.  These include the Server-Handler, the players Connection-Handlers, and the games Data being sent during execution and more.
 
-## Features
+## Research
+
+[Tic-Tac-Toe Basic Program](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html)
+[Tic-Tac-Toe Between Two Clients](https://www.java-tips.org/java-se-tips-100019/15-javax-swing/584-a-game-of-tic-tac-toe-that-can-be-played-between-two-client-applets.html)
+[Tic-Tac-Toe Case Study](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html)
+[Mouse-Listener Toggle 1](https://stackoverflow.com/questions/2627946/how-to-remove-mouselistener-actionlistener-on-a-jtextfield)
+[Mouse-Listener Toggle 2](https://stackoverflow.com/questions/50672830/java-mouse-listener-toggle-version-click-counter)
+[Javac @sources.txt Running Java Packages Through Command-Line](https://stackoverflow.com/questions/6623161/javac-option-to-compile-all-java-files-under-a-given-directory-recursively)
+
 
 ## Testing Plans
 
