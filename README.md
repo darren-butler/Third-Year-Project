@@ -22,6 +22,7 @@ Each player will see a gameboard that is represented by a 3 row X 3 column grid.
 ## System Requirements
 
 - Java 8 Language
+- Virtual Personal Computer __(VPC)__ in the Cloud.
 - Server (Cloud)
 - Client(s) (minimum of 2)
 
@@ -47,7 +48,7 @@ The project is designed using a basic Java Project created in Eclipse Oxygen. Th
 
 ## Testing Plans
 
-The programs functionality was tested by creating a virtual personal computer (VPC) in the cloud using Microsofts Azure.  The Server was then setup and run on the VPC in the cloud allowing multiple Clients (players) to connect to the Server.  Next the application was run on a different computer, __NOT THE VPC,__ for two players which connect to the servers IP address through a designated port address.
+The programs functionality was tested by creating a virtual personal computer (VPC) in the cloud using Microsofts Azure.  The Server was then setup and run on the VPC in the cloud allowing multiple Clients (players) to connect to the Server.  Next the application was run on a different computer, __NOT THE VPC,__ for two players which connect to the Servers IP address through a designated port address.
 
 ## Recommendations for Future Development
 
