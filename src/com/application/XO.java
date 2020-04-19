@@ -67,6 +67,86 @@ public class XO {
 		return false;
 	}
 	
+	public int isWinningMove(int player) {
+		// return 1 - if X wins
+		// return -1 if O wins
+		// return 0 if draw
+		// return 2 if game not over
+		
+		
+		int count = 0; // check rows for win
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (board[i][j] == player) {
+					count++;
+				}
+			}
+			if(count == 3) {
+				return player; // winner
+			} else {
+				count = 0;
+			}
+		}
+		
+		count = 0; // check cols for win
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (board[j][i] == player) {
+					count++;
+				}
+			}
+			if(count == 3) {
+				return player; // winner
+			} else {
+				count = 0;
+			}
+		}
+		
+		count = 0; // check diagonal for win (00, 11, 22)
+		for (int i = 0; i < 3; i++) {
+			if (board[i][i] == player) {
+				count++;
+			}
+		}
+		if(count == 3) {
+			return player; // winner
+		} else {
+			count = 0;
+		}	
+		
+		count = 0; // check anti diagonal for win (20, 11, 02)
+		if(board[2][0] == player) {
+			count++;
+		}
+		if(board[1][1] == player) {
+			count++;
+		}
+		if(board[0][2] == player) {
+			count++;
+		}
+		
+		if(count == 3) {
+			return player; // winner
+		}
+		
+		
+		count = 0; // check draw
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				if (board[i][j] != 0) {
+					count++;
+				}
+			}
+			
+			if(count == 9) {
+				return 0;
+			}
+		}
+		
+		
+		return 2;
+	}
+	
 	public static void clearScreen() {  
 	    System.out.print("\033[H\033[2J");  
 	    System.out.flush();  

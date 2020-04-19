@@ -27,9 +27,9 @@ public class Game {
 //				String ip = console.next();
 //				System.out.print("\tport: ");
 //				int port = console.nextInt();
-//				
+				
 				System.out.println("\n\tconnecting to server...");
-//				sh = new ServerHandler(ip, port);
+				//sh = new ServerHandler(ip, port);
 				sh = new ServerHandler("127.0.0.1", 10000); // TODO remove hard-code
 				break;
 			case 2:
@@ -53,6 +53,10 @@ public class Game {
 
 					while(true) {
 						data = sh.recieveData();
+						if(data.getHeader() == 10) {
+							System.out.println(data.getBody());
+							break;
+						}
 						game.setBoard(data.getBoard());
 						game.printBoard();
 						
@@ -63,7 +67,6 @@ public class Game {
 							y = Integer.parseInt(String.valueOf(str.charAt(1)));
 							
 						}while (!game.isValidMove(x, y));
-					
 						
 						game.move(x, y);
 						game.printBoard();
@@ -71,11 +74,8 @@ public class Game {
 						data.setBoard(game.getBoard());
 						data.setHeader(0);
 						
-						sh.sendData(data);
-						
+						sh.sendData(data);						
 					}
-
-	
 					
 				} else {
 					System.out.println("\terror - server connection not established");
@@ -93,7 +93,7 @@ public class Game {
 		console.close();
 	}
 
-	static void printMenu() {
+	static void printMenu() {    
 		System.out.println("--MENU--");
 		System.out.println("1. Connect");
 		System.out.println("2. Disconnect");

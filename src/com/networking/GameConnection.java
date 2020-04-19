@@ -26,45 +26,71 @@ public class GameConnection implements Runnable {
 
 		try {
 			XO game = new XO();
-			
+
 			data = new Data();
 			data.setBoard(game.getBoard());
-			
+
 			data.setPlayer(1);
 			player1.sendData(data);
 			data.setPlayer(-1);
 			player2.sendData(data);
 
-			
-			while(true) {
+			while (true) {
 				player1.sendData(data);
-				
+
 				data = null;
 				player1.setData(null);
 				do {
 					data = player1.getData();
-					//System.out.println(this + " waiting...");
+					// System.out.println(this + " waiting...");
 					Thread.sleep(1000);
-				}while(data == null);
-				
+				} while (data == null);
+
 				game.setBoard(data.getBoard());
 				data.setBoard(game.getBoard());
-				
-				
+
+				if (game.isWinningMove(data.getPlayer()) == data.getPlayer()) {
+					System.out.println("X wins!");
+					data.setBody("X wins!");
+					data.setHeader(10);
+					player1.sendData(data);
+					player2.sendData(data);
+					return;
+				} else if (game.isWinningMove(data.getPlayer()) == 0) {
+					data.setBody("Draw!");
+					data.setHeader(10);
+					player1.sendData(data);
+					player2.sendData(data);
+					return;
+				}
+
 				player2.sendData(data);
-				
+
 				data = null;
 				player2.setData(null);
 				do {
 					data = player2.getData();
-					//System.out.println(this + " waiting...");
+					// System.out.println(this + " waiting...");
 					Thread.sleep(1000);
 
-				}while(data == null);
-				
-				
+				} while (data == null);
+
 				game.setBoard(data.getBoard());
 				data.setBoard(game.getBoard());
+
+				if (game.isWinningMove(data.getPlayer()) == data.getPlayer()) {
+					data.setBody("O Wins!");
+					data.setHeader(10);
+					player1.sendData(data);
+					player2.sendData(data);
+					return;
+				} else if (game.isWinningMove(data.getPlayer()) == 0) {
+					data.setBody("Draw!");
+					data.setHeader(10);
+					player1.sendData(data);
+					player2.sendData(data);
+					return;
+				}
 			}
 
 		} catch (Exception e) {
