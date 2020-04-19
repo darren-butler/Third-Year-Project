@@ -36,9 +36,12 @@ The technology used is the Java 8 programming language.  The main reasons for us
 ## Design Methodology
 
 The project is designed using a basic Java Project created in Eclipse Oxygen. Then the project is broken down into three seperated packages each with their own functionality. 
-1). com.application
-2). com.graphics
-3). com.networking
+- com.application
+  - This package contains the classes used to run the program and pull the classes from the other two packages (com.graphics, com.networking) to be used during the programs execution.  The main classes in this package are the Server class for setting up the applications server and the Game class used by the players to start the application and connect to the server.
+- com.graphics
+  - This package contains the classes used to produce graphics and game logic. These include the games state stored in GameState, various game utilities stored in Utilities, the gameboards cell (grid) information stored in Cell and more.
+- com.networking 
+  - This package contains the classes used to handle the networking side of the program.  These include the Server-Handler, the players Connection-Handlers, and the games Data being sent during execution and more.
 
 ## Features
 
