@@ -27,12 +27,11 @@ Each player will see a gameboard that is represented by a 3 row X 3 column grid.
 
 ## Technology Used and Why
 
-The technology used is the Java 8 programming language.  The main reasons for using this programming language is as follows:
-- Good knowledge of Javas programming by both collaborators.
+The technology used is the Java 8 programming language.  The main reasons for using this programming language are as follows:
+- Good knowledge of Javas programming langauge by both collaborators.
+- Good knowledge of Object Oriented Programming in the Java programming langauge by both collaborators.
 - Previous knowledge in Java networking from a past module (Operating Systems).
-- Ease of access to vast set documentation online with the intent of learning new outcomes such as the graphics implementation in Java 8.
-
-## Architecture of the Solution
+- Ease of access to vast documentation online with the intent of learning new outcomes such as the graphics implementation, package deployment, multi-client network in Java 8.
 
 ## Design Methodology
 
@@ -41,9 +40,7 @@ The project is designed using a basic Java Project created in Eclipse Oxygen. Th
 2). com.graphics
 3). com.networking
 
-## Features of the Implementation
-
-## Limitations of Known Bugs
+## Features
 
 ## Testing Plans
 
