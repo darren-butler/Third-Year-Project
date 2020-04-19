@@ -38,7 +38,6 @@ public class XO {
 	}
 	
 	public void printBoard() throws IOException {
-		clearScreen();
 
 		for(int i = 0; i < Utilities.ROWS; i++) {
 			for(int j = 0; j < Utilities.COLS; j++) {	
@@ -50,7 +49,7 @@ public class XO {
 					System.out.print("[ ]");
 				}
 			}
-			System.out.println();
+			System.out.println("------------------\n");
 		}
 	}
 
@@ -146,11 +145,7 @@ public class XO {
 		
 		return 2;
 	}
-	
-	public static void clearScreen() {  
-	    System.out.print("\033[H\033[2J");  
-	    System.out.flush();  
-	}  
+	  
 	
 	public void move(int x, int y) { 
 		this.board[x][y] = this.player;
