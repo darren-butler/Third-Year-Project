@@ -45,6 +45,7 @@ public class GameConnection implements Runnable {
 					// System.out.println(this + " waiting...");
 					Thread.sleep(1000);
 				} while (data == null);
+				data.setPlayer(1);
 
 				game.setBoard(data.getBoard());
 				data.setBoard(game.getBoard());
@@ -74,6 +75,8 @@ public class GameConnection implements Runnable {
 					Thread.sleep(1000);
 
 				} while (data == null);
+				data.setPlayer(-1);
+
 
 				game.setBoard(data.getBoard());
 				data.setBoard(game.getBoard());
