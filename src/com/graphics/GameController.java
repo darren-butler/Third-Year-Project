@@ -156,6 +156,7 @@ public class GameController extends JFrame {
 	public void updateGame(Cell currentPlayer, int rowSelected, int colSelected) {
 	      if (hasWon(currentPlayer, rowSelected, colSelected)) {  // check for win
 	         currentState = (currentPlayer == Cell.X) ? GameState.X_WON : GameState.O_WON;
+	         statusBar.setText("Player " + currentPlayer + " Wins!");
 	      } else if (isDraw()) {  // check for draw
 	         currentState = GameState.DRAW;
 	      }
