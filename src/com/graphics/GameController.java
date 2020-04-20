@@ -167,4 +167,5 @@ public class GameController extends JFrame {
 		// Creates a single instance of the GameControllers default constructor
 		GameController gc = new GameController();
 	}
+	
 }
