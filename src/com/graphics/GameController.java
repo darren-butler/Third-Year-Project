@@ -84,6 +84,7 @@ public class GameController extends JFrame {
 					} else {
 						// Call method to initiate Game-board
 						initGame();
+						statusBar.setText("FIGHT!");
 					}
 					// Call paintComponent in Canvas class
 					repaint();		
