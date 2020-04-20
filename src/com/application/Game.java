@@ -83,6 +83,11 @@ public class Game {
 					System.out.println("\terror - server connection not established");
 				}
 				break;
+			case 4:
+				GameController gc = new GameController();
+				// Don't close application on X click instead close current running window
+				gc.setDefaultCloseOperation(gc.DISPOSE_ON_CLOSE);
+				break;
 			case 0:
 				System.out.println("\tQuitting...");
 				break;
@@ -100,6 +105,7 @@ public class Game {
 		System.out.println("1. Connect");
 		System.out.println("2. Disconnect");
 		System.out.println("3. Queue");
+		System.out.println("4. Local Game");
 		System.out.println("0. Quit");
 		System.out.print(">");
 	}
