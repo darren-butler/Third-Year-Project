@@ -39,8 +39,8 @@ public class XO {
 	
 	public void printBoard() throws IOException {
 
-		System.out.println("=========");
-		
+		//System.out.println("=========");
+		Utilities.clrscr();
 		for(int i = 0; i < Utilities.ROWS; i++) {
 			for(int j = 0; j < Utilities.COLS; j++) {	
 				if(board[i][j] == 1) {
@@ -53,7 +53,7 @@ public class XO {
 			}
 			System.out.println();
 		}
-		System.out.println("=========");
+		//System.out.println("=========");
 
 	}
 

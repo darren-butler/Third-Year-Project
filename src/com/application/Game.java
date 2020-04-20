@@ -3,6 +3,7 @@ package com.application;
 import java.io.IOException;
 import java.util.Scanner;
 import com.graphics.GameController;
+import com.graphics.Utilities;
 import com.networking.Data;
 import com.networking.ServerHandler;
 
@@ -101,7 +102,8 @@ public class Game {
 		console.close();
 	}
 
-	static void printMenu() {    
+	static void printMenu() {   
+		Utilities.clrscr();
 		System.out.println("--MENU--");
 		System.out.println("1. Connect");
 		System.out.println("2. Disconnect");
@@ -110,6 +112,8 @@ public class Game {
 		System.out.println("0. Quit");
 		System.out.print(">");
 	}
+	
+
 }
 
 
