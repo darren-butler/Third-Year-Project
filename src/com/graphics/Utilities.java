@@ -1,4 +1,7 @@
 package com.graphics;
+
+import java.io.IOException;
+
 /*
  * This class is used to store the games related utilities.  These are final variables that
  * will never change during execution and are called multiple times throughout different classes.
@@ -25,4 +28,14 @@ public class Utilities {
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING *2;
 	// Pen's (symbol) stroke width for drawing graphics
 	public static final int SYMBOL_STROKE_WIDTH = 8;
+	
+	public static void clrscr(){ // https://stackoverflow.com/a/38365871
+	    //Clears Screen in java
+	    try {
+	        if (System.getProperty("os.name").contains("Windows"))
+	            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	        else
+	            Runtime.getRuntime().exec("clear");
+	    } catch (IOException | InterruptedException ex) {}
+	}
 }

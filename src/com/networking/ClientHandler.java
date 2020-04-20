@@ -6,6 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 // facilitates communication between server and an individual client
+// the server will have a thread instance of this class for each client that is connected
 public class ClientHandler implements Runnable {
 
 	public void setData(Data data) {
@@ -40,7 +41,6 @@ public class ClientHandler implements Runnable {
 	@Override
 	public void run() {
 
-		// TODO more graceful implementation - https://stackoverflow.com/a/9459292
 		try {
 			out = new ObjectOutputStream(socket.getOutputStream());
 			out.flush();
@@ -49,22 +49,22 @@ public class ClientHandler implements Runnable {
 			isConnected = true;
 
 			while (isConnected) {
-				data = recieveData();
+				data = recieveData(); // blocking call - wait to receive data 
 				System.out.println(
-						"\tclient[" + id + "] >>> [Header=" + data.getHeader() + "] [BODY=" + data.getBody() + "]");
+						"\tclient[" + id + "] >>> [Header=" + data.getHeader() + "] [BODY=" + data.getBody() + "]"); // when something is received print it to server console (for debugging)
 
 				switch (data.getHeader()) {
-				case 2: // 1 = disconnect header
+				case 2: // 2 = disconnect header
 					out.close();
 					in.close();
 					socket.close();
 					isConnected = false;
 					System.out.println("\tclient[" + id + "] disconnected");
 					break;
-				case 3:
+				case 3: // 3 = ready to playe
 					isReady = true;
 					break;
-				case -1: 
+				case -1: // -1 = gameplay data
 					gameConnection.setData(data);
 					break;
 				default:

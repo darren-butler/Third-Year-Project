@@ -15,7 +15,7 @@ public class QueueHandler implements Runnable {
 
 	@Override
 	public void run() {
-		while(true) {
+		while(true) { // constantly check if there are 2 players on the ready queue to spawn a new GameConnection thread to play a game
 			if(ready.size() >= GAME_SIZE) {
 				GameConnection g = new GameConnection(ready.poll(), ready.poll());
 				System.out.println("\tclient["+g.getPlayer1().getId()+"] & client["+g.getPlayer2().getId()+"] starting new game...");

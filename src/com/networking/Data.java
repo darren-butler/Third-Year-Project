@@ -6,13 +6,14 @@ import com.application.XO;
 import com.graphics.Cell;
 import com.graphics.Utilities;
 
+// Encapsulates all data that is sent between server/client
 public class Data implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	private int header;
-	private String body;
-	private int[][] board;
-	private int player;
+	private int header; // used to determine what type of data is being received (logistical information like connecting, disconnecting, ready, or gameplay data)
+	private String body; // used to send messages (winning player, debugging information)
+	private int[][] board; // 2D array representing the XO board
+	private int player; // -1, or 1 X or O
 	
 	public Data() {
 		this.header = -1;
