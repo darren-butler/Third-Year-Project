@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
 public class ListHandler implements Runnable {
 
 	private List<ClientHandler> clients;
-	private BlockingQueue<ClientHandler> ready;
+	private BlockingQueue<ClientHandler> ready; // BlockingQueue essential for thread safe operations
 
 	public ListHandler(List<ClientHandler> clients, BlockingQueue<ClientHandler> ready) {
 		this.clients = clients;
@@ -19,12 +19,12 @@ public class ListHandler implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			Iterator<ClientHandler> it = clients.iterator();
+			Iterator<ClientHandler> it = clients.iterator(); // needed to iterate over List of clients thread safely
 			while (it.hasNext()) {
 				ClientHandler ch = it.next();
 				if (ch.isConnected()) {
 					if (ch.isReady()) {
-						ready.offer(ch);
+						ready.offer(ch); // if a client is ready, offer them to the ready queueu
 						ch.setReady(false);
 					}
 				} else {

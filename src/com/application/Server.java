@@ -24,13 +24,12 @@ public class Server {
 
 		now = LocalDateTime.now();
 		System.out.println("["+dtf.format(now)+"] Server:");
-		// listens for incoming client connections
-		new Thread(new ConnectionListener(clients)).start();
+		new Thread(new ConnectionListener(clients)).start(); // listens for incoming client connections
+
 		now = LocalDateTime.now();
 		System.out.println("\tlistening for incoming connections...");
 
-		// moves clients from list to queue as ready
-		new Thread(new ListHandler(clients, ready)).start();
+		new Thread(new ListHandler(clients, ready)).start(); // moves clients from list to queue as ready
 		now = LocalDateTime.now();
 		System.out.println("\tmonitoring for ready clients...");
 
@@ -39,7 +38,7 @@ public class Server {
 		now = LocalDateTime.now();
 		System.out.println("\tinstantiating games with ready players...");
 		
-		while(true) {
+		while(true) { // every 2 seconds output server stats (connected players, ready players)
 			now = LocalDateTime.now();
 			System.out.println("["+dtf.format(now)+"] Server:");
 			System.out.println("\tconnected clients: " + clients.size());

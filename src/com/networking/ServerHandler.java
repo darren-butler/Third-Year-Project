@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+// a client has an instance of this class to facilitate communication to the server
 public class ServerHandler {
 
 //	private static final String IP = "127.0.0.1";

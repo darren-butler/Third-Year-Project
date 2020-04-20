@@ -41,28 +41,29 @@ public class Game {
 				}
 				break;
 			case 3:
-				if (sh != null && sh.isConnected() == true) {
+				if (sh != null && sh.isConnected() == true) { // if successfully connected to server, send data with header=3 to request to join queue for game
 					sh.sendData(new Data(3, null));
 					System.out.println("\tqueueing for game...");
 
-					data = sh.recieveData();
-					XO game = new XO();
+					data = sh.recieveData(); // blocking call - once we're in the queue, wait to receive some game data from server 
+					XO game = new XO(); // init new game instance locally
 					
-					game.setBoard(data.getBoard());
-					game.setPlayer(data.getPlayer());
+					game.setBoard(data.getBoard()); // set our instance of the board state to whatever the server just sent us
+					game.setPlayer(data.getPlayer()); // get our player assignment (X or O) from server
 
-					while(true) {
-						data = sh.recieveData();
-// TODO: double check if(game won) -> used to be here
-						game.setBoard(data.getBoard());
-						game.printBoard();
+					while(true) { // repeat the following steps until the game is over
+						data = sh.recieveData(); // 1. receive game data from the server
 						
-						if(data.getHeader() == 10) {
+						// TODO: double check if(game won) -> used to be here
+						game.setBoard(data.getBoard()); // 2. set out local game data to that which the server just sent
+						game.printBoard(); // 3. display the board to the user
+						
+						if(data.getHeader() == 10) { // if header=10, the game is over, print out the winner and break from while(true) loop
 							System.out.println(data.getBody());
 							break;
 						}
 						
-						do {
+						do { // 4. prompt the player to make a move until a valid move is input
 							System.out.print("move: ");
 							String str = console.next();
 							x = Integer.parseInt(String.valueOf(str.charAt(0)));
@@ -70,13 +71,13 @@ public class Game {
 							
 						}while (!game.isValidMove(x, y));
 						
-						game.move(x, y);
-						game.printBoard();
+						game.move(x, y); //  5. update local instance of board state with new move
+						game.printBoard(); // 6. print new board state to player 
 						
-						data.setBoard(game.getBoard());
+						data.setBoard(game.getBoard()); // 7. pass updated board state to data object with header=0 (game data header)
 						data.setHeader(0);
 						
-						sh.sendData(data);						
+						sh.sendData(data); // 8. send data with new board state to server					
 					}
 					
 				} else {

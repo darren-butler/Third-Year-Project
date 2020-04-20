@@ -17,7 +17,7 @@ public class XO {
 		this.player = player;
 	}
 
-	public XO() {
+	public XO() { // default constructor, init a new empty board
 		for(int i = 0; i < Utilities.ROWS; i++) {
 			for(int j = 0; j < Utilities.COLS; j++) {
 				board[i][j] = 0;
@@ -57,7 +57,7 @@ public class XO {
 
 	}
 
-	public boolean isValidMove(int x, int y) {
+	public boolean isValidMove(int x, int y) { // takes xy coords of a move and checks if it is a valid move (within bounds of array and not already taken)
 		
 		if(x >= 0 && y >= 0) {
 			if(x < Utilities.ROWS && y < Utilities.COLS) {
