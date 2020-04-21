@@ -75,18 +75,13 @@ To play each player can take turns selecting their cell with the mouse.
 ## Technology Used and Why
 
 The following is a list of technologies we used during development and why.
-- [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
-- This was a very straightforward decision, Java, specifically version 8 is the programming language that both of use are most familiar with. And we have been exposed to many applications of this programming language in other modules, like socket programming, multithreading, data structures & algorithms.  
-- [Git](https://git-scm.com/)
-- We used git for source control on this project and attempted to follow the [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model for development. This turned out to be somewhat of a challenge and is outlined in more detail in the DevLog section of this document
-- [GitHub](https://github.com/)
-- Used to host our source control. We were both well used to using github, as such had no reason to use anything else.
-- [Eclipse](https://www.eclipse.org/)
-- Another straightforward decision, we have both been using this IDE for a few years now. It also has good tools for integration with git, enabling us to easily swap between different branches of the code.
-- [Discord](https://discordapp.com/)
-- We used Discord as our primary tool for communication. It is a chat app mainly marketed for gamers and gaming communities. However, with it, we were able to setup our own chat server, host voice calls and stream our desktops. This was invaluable for pair programming and working through problems together, especially throughout the COVID-19 pandemic. Using discord, we were able to seamlessly work together remotely.
-- [Azure](https://azure.microsoft.com/en-us/)
-- We used Microsoft cloud computing platform Azure to host our server-side code for demonstration and proof of concept. Other options were Amazon Web Services and Google Cloud Platform, we chose Azure because they gave a free $170 credit and because setting up firewall rules on Azure was most straight forward.
+- [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html), a very straightforward decision, Java, specifically version 8 is the programming language that both of use are most familiar with. And we have been exposed to many applications of this programming language in other modules, like socket programming, multithreading, data structures & algorithms.  
+- [Git](https://git-scm.com/) for source control on this project and attempted to follow the [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model for development. This turned out to be somewhat of a challenge and is outlined in more detail in the DevLog section of this document
+- [GitHub](https://github.com/) to host our source control. We were both well used to using github, as such had no reason to use anything else.
+- [Eclipse](https://www.eclipse.org/), another straightforward decision, we have both been using this IDE for a few years now. It also has good tools for integration with git, enabling us to easily swap between different branches of the code.
+- [Discord](https://discordapp.com/), our primary tool for communication. It is a chat app mainly marketed for gamers and gaming communities. However, with it, we were able to setup our own chat server, host voice calls and stream our desktops. This was invaluable for pair programming and working through problems together, especially throughout the COVID-19 pandemic. Using discord, we were able to seamlessly work together remotely.
+- [Azure](https://azure.microsoft.com/en-us/), Microsoft cloud computing platform to host our server-side code for demonstration and proof of concept. Other options were Amazon Web Services and Google Cloud Platform, we chose Azure because they gave a free $170 credit and because setting up firewall rules on Azure was most straight forward.
+
 
 ## Design Methodology
 
