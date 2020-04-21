@@ -109,6 +109,20 @@ As part of our third year Operating Systems module, we covered multithreaded soc
 
 Another useful resource pertaining to Java socket programming is [Java Network Programming – Elliotte Rusty Harold]( https://books.google.ie/books/about/Java_Network_Programming.html?id=NyxObrhTv5oC&redir_esc=y) . This book has easy to comprehend concepts and well laid out examples of multithreaded socket programming in Java. Specifically, page 341 – 362 explain several useful servers and show their implementation in Java.
 
+### Graphics
+When deciding how best to implement computer graphics into the project we looked into community made Java game engines and offical Java graphic supports. We came across 4 different possible choices that could meet our project needs [LIBGDX](https://libgdx.badlogicgames.com/),  [LWJGL](https://www.lwjgl.org/), [JavaFX](https://openjfx.io/), and [Java AWT](https://docs.oracle.com/javase/7/docs/api/java/awt/package-summary.html).
+
+LIBGDX is a community made cross-platform Java game development framework based on OpenGL.  It is a low level, free, open source framework.  LIBGDX makes both 2D and 3D games in Java with demo showcases on their offical website. It has support and release versions for Java 8 and Java 10.
+
+LWJGL stands for Lightweight Java Game Library and is a community made Java game development framework based on a combination of LIBGDX and [JMonkeyEngine](https://jmonkeyengine.org/), an open source, cross-platform, 3D Java game engine.  It uses a number of native APIs like OpenGL and Vulkan for graphics and OpenAL for audio.  LWJGL has an offical [GitHub Repo](https://github.com/LWJGL/lwjgl3) used to report issues and to allow the community to contribute their own code.
+
+JavaFX is an open source, cross platform GUI toolkit for Java.  It is the successor to the Java Swing libraries and is offically supported by [Oracle](https://docs.oracle.com/javafx/2/get_started/jfxpub-get_started.htm) documentation.  JavaFX has a dedicated community which creates specialized frameworks for Java developers.  One such framework is the [JavaFXGL](https://github.com/AlmasB/FXGL) GitHub repo created by user AlmasB.  This framework is dedicated to JavaFX game based graphics.
+
+Java AWT stands for Abstract Window Toolkit and is part of a standard API which provides a graphical user interface (GUI) for Java programs.  Unlike the previous Java game engines mentioned, AWT is built into Java and only requires a package import in a Java class.  Using Java AWT in combination with Java [Swing](https://docs.oracle.com/javase/7/docs/api/javax/swing/package-summary.html) allows the programmer to create a full graphical experience for the user.
+
+During our third year module of Graphics Programming we learned how to created and manipulate graphics in a browser using HTML, CSS, and JavaScript.  Most importantly we learned how to use mathematics to reason about and model computer graphics allowing us to programatically interact and animated graphics.  This will prove vital in designing, conceptualizing, and implementing graphics in our project.
+
+Another third year module Object-Oriented Programming taught us how to utilise core object-oriented (OOP) programming concepts and develop problem solving skills using the Java prgramming language. This will be put to good use throughout the projects design using OOP based classes to avoid redundant data, help maintainability, readability, and robustness.
 
 ## Functionality
 
