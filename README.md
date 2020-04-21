@@ -11,7 +11,7 @@
 
 ## Introduction <a name="intro"></a>
 
-This github repository is home to a collaborated project by Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) for their third-year project in the 'Professional Practice in Information Technology' module.
+This github repository is home to a collaborated project by Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) for their third-year-project in the 'Professional Practice in Information Technology' module.
 The program created is a multiplayer networked game of Tic-Tac-Toe, using the Java programming language. 
 
 ## User Guide <a name="usrgd"></a>
@@ -128,7 +128,7 @@ There are already many Java libraries that aim to simplify network programming f
 
 The concepts covered in our second year Applied Networking Technology modules will be invaluable throughout development. Of foremost importance is probably the distinction between [TCP]( https://searchnetworking.techtarget.com/definition/TCP) and [UDP]( https://www.geeksforgeeks.org/user-datagram-protocol-udp/). Both are data transmission protocols with their own advantages and disadvantages. TCP is the perfect fit for our needs. In a turn-based game, where very few data packets, containing key information are communicated each time, it is essential that nothing is lost. We also don’t need to leverage the speed of a UDP connection I.e. it is acceptable for 1 player to be waiting on another player to make their move for a time.
 
-As part of our third year Operating Systems module, we covered multithreaded socket programming in Java. In fact, our main assignment for this module was to build a [multithreaded client/server]( https://github.com/Darren-B312/Multithreaded-TCP-Client-Server) application where multiple clients can connect and make changes to a shared data object in a thread safe way. We plan to take this concept and expand on it. Instead of just having clients connect and make changes, we want to develop a much more robust server, capable of listening for client connections, putting ready clients into a queue, and starting new games with players in the queue. This will require a good deal of multi-threading which must be handled properly for the program to be usable. 
+As part of our third-year Operating Systems module, we covered multithreaded socket programming in Java. In fact, our main assignment for this module was to build a [multithreaded client/server]( https://github.com/Darren-B312/Multithreaded-TCP-Client-Server) application where multiple clients can connect and make changes to a shared data object in a thread safe way. We plan to take this concept and expand on it. Instead of just having clients connect and make changes, we want to develop a much more robust server, capable of listening for client connections, putting ready clients into a queue, and starting new games with players in the queue. This will require a good deal of multi-threading which must be handled properly for the program to be usable. 
 
 Another useful resource pertaining to Java socket programming is [Java Network Programming – Elliotte Rusty Harold]( https://books.google.ie/books/about/Java_Network_Programming.html?id=NyxObrhTv5oC&redir_esc=y) . This book has easy to comprehend concepts and well laid out examples of multithreaded socket programming in Java. Specifically, page 341 – 362 explain several useful servers and show their implementation in Java.
 
