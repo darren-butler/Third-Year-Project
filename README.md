@@ -52,9 +52,12 @@ If there are enough players (2) in the queue to start a game, the server will in
 
 To make your move, input the cell you want to choose as two integers for the row and column. 
 (E.g. to select the bottom-left cell (row 2 column 0) input '20' with no spaces)
+
 ![](https://i.imgur.com/DHlixs5.png)
+
 If you move is valid, it should appear on screen and you will now have to wait for player 2 to make their turn.
 This back and forth will continue until either a player wins, or there are no more available cells to choose and the game is a draw. Once this happens the result of the game will be displayed and both players will be returned to the main menu where they may queue up to play again.
+
 ![](https://i.imgur.com/lRJDt1L.png)
 
 To play a local game is very straightforward. Simple run the client application:
