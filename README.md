@@ -72,14 +72,13 @@ You will be presented with the same menu as before. Input (4) to play a local ga
 ![Graphical Game](https://i.imgur.com/R6nq2TV.png)
 
 To play each player can take turns selecting their cell with the mouse.
-
 ## Technology Used and Why
 
 The following is a list of technologies we used during development and why.
 - [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
 This was a very straightforward decision, Java, specifically version 8 is the programming language that both of use are most familiar with. And we have been exposed to many applications of this programming language in other modules, like socket programming, multithreading, data structures & algorithms.  
 - [Git](https://git-scm.com/)
-We used git for source control on this project. Initially we attempted to follow the [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model for development. We found that this was overkill for a project of this scope, with only 2 developers. Midway through development we had to spend a considerable amount of effort working out branching issues that arose from using this somewhat overly complicated system.
+We used git for source control on this project and attempted to follow the [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model for development. This turned out to be somewhat of a challenge and is outlined in more detail in the DevLog section of this document
 - [GitHub](https://github.com/)
 Used to host our source control. We were both well used to using github, as such had no reason to use anything else.
 - [Eclipse](https://www.eclipse.org/)
