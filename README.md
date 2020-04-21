@@ -83,15 +83,36 @@ The following is a list of technologies we used during development and why.
 - [Azure](https://azure.microsoft.com/en-us/), Microsoft cloud computing platform to host our server-side code for demonstration and proof of concept. Other options were Amazon Web Services and Google Cloud Platform, we chose Azure because they gave a free $170 credit and because setting up firewall rules on Azure was most straight forward.
 
 
-## Design Methodology
+## System Architecture
 
-The project is designed using a basic Java Project created in Eclipse Oxygen. Then the project is broken down into three separated packages each with their own functionality. 
+The code base is broken into three major java packages, each consisting of classes with single responsibilities. This was done to develop as loosely coupled a system as possible:
 - com.application
   - This package contains the classes used to run the program and pull the classes from the other two packages (com.graphics, com.networking) to be used during the programs execution.  The main classes in this package are the Server class for setting up the applications server and the Game class used by the players to start the application and connect to the server.
 - com.graphics
   - This package contains the classes used to produce graphics and game logic. These include the games state stored in GameState, various game utilities stored in Utilities, the gameboards cell (grid) information stored in Cell and more.
 - com.networking 
   - This package contains the classes used to handle the networking side of the program.  These include the Server-Handler, the players Connection-Handlers, and the games Data being sent during execution and more.
+
+This is a good design pattern to follow as it promotes code reuse and maintainability. For example, the networking code could be repurposed to network another turn-based game entirely. The networking package is built around the idea of passing Data back and forth between two clients and a server, as such it has almost no concern with drawing graphics or gameplay logic.
+
+### Server Code
+This section will outline, in detail, the individual components of the systems networking functionality and how they are all combined together. 
+
+* com.application.Server – This class contains the main method for all server side code. It instantiates an ArrayList<ClientHandler> and a BlockingQueue<ClientHandler>. These data structures are used to keep tabs on clients currently connected to the server and in the ready queue to join a game. This class also instantiates and runs three threads, a ConnectionListener, ListHandler and QueueHandler. These threads are an attempt to subdivide and modularize the jobs done by the server. Once these data structures and threads have been setup, the Server code hits an infinite loop which, every 2 seconds, prints the current time and the number of clients in the ArrayList and BlockingQueue.
+
+* com.networking.ClientHandler – is used for communication from the server to an individual client. Each ClientHandler has an id, Socket, and in/out object streams for communication. Once a client connects to the server, the server instantiates a runnable instance of this class for that client. The server maintains an ArrayList of these runnable objects which are responsible for listening for incoming data, printing it to the server console, and based on the header of the data, handle it appropriately. E.g. if data with the header=3 is received, this will prompt the ListHandler thread to move the client into the ready queue to play a game.
+
+* com.networking.ConnectionListener – a runnable, instantiated by the server. Its sole purpose is to listen for incoming connections on a specified port, instantiate a Socket and ClientHandler for communication, and add this new client to the ArrayList<ClientHandler>. It then starts the ClientHandler thread.
+
+* com.networking.Data – used to encapsulate all data send between server and client. It implements the Serializable Interface and has an int header, String body, int[][] board and int player. This is all data that could be needed by either client or server.
+
+* com.networking.ListHandler – monitors the list of connected clients for any that are ready to play a game, or disconnect. The server instantiates this thread. It constantly iterates over the list of connected clients and checks if any client has flagged themselves as ready or disconnected.
+
+* com.networking.QueueHandler – constantly checks the size of the ready queue, if there are ever 2 or more players in the queue, it polls the top two off the queue and instantiates a GameConnection thread with the two polled clients.
+
+* com.networking.GameConnection – is an instance of a game. This thread is started with two players who are polled off the ready queue. It manages all the send/receive message flow required to run a game of Tic-tac-toe. I.e. prompt player 1 to take their turn, receive their response, relay that to player 2, prompt player 2 to take their turn etc. Once the game is over this thread dies off.
+
+* com.networking.ServerHandler – the inverse of a ClientHandler. It is instantiated by a client and used to send data to the server.
 
 
 ## Research
