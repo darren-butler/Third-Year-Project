@@ -73,14 +73,21 @@ You will be presented with the same menu as before. Input (4) to play a local ga
 
 To play each player can take turns selecting their cell with the mouse.
 
-
 ## Technology Used and Why
 
-The technology used is the Java 8 programming language.  The main reasons for using this programming language are as follows:
-- Good knowledge of Javas programming language by both collaborators.
-- Good knowledge of Object Oriented Programming in the Java programming language by both collaborators.
-- Previous knowledge in Java networking from a past module (Operating Systems).
-- Ease of access to vast documentation online with the intent of learning new outcomes such as the graphics implementation, package deployment, multi-client network in Java 8.
+The following is a list of technologies we used during development and why.
+- [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html)
+This was a very straightforward decision, Java, specifically version 8 is the programming language that both of use are most familiar with. And we have been exposed to many applications of this programming language in other modules, like socket programming, multithreading, data structures & algorithms.  
+- [Git](https://git-scm.com/)
+We used git for source control on this project. Initially we attempted to follow the [GitFlow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model for development. We found that this was overkill for a project of this scope, with only 2 developers. Midway through development we had to spend a considerable amount of effort working out branching issues that arose from using this somewhat overly complicated system.
+- [GitHub](https://github.com/)
+Used to host our source control. We were both well used to using github, as such had no reason to use anything else.
+- [Eclipse](https://www.eclipse.org/)
+Another straightforward decision, we have both been using this IDE for a few years now. It also has good tools for integration with git, enabling us to easily swap between different branches of the code.
+- [Discord](https://discordapp.com/)
+We used Discord as our primary tool for communication. It is a chat app mainly marketed for gamers and gaming communities. However, with it, we were able to setup our own chat server, host voice calls and stream our desktops. This was invaluable for pair programming and working through problems together, especially throughout the COVID-19 pandemic. Using discord, we were able to seamlessly work together remotely.
+- [Azure](https://azure.microsoft.com/en-us/)
+We used Microsoft cloud computing platform Azure to host our server-side code for demonstration and proof of concept. Other options were Amazon Web Services and Google Cloud Platform, we chose Azure because they gave a free $170 credit and because setting up firewall rules on Azure was most straight forward.
 
 ## Design Methodology
 
