@@ -146,20 +146,6 @@ During our third year module of Graphics Programming we learned how to created a
 
 Another third year module Object-Oriented Programming taught us how to utilise core object-oriented (OOP) programming concepts and develop problem solving skills using the Java prgramming language. This will be put to good use throughout the projects design using OOP based classes to avoid redundant data, help maintainability, readability, and robustness.
 
-## Functionality
-
-__Questions:__
-- __What does it do?__
-- __How do I (USER) use it?__
-- __What do I (USER) see?__
-
-The programs main function is to allow N-number of players to connect to a server in which they can join a game of Tic-Tac-Toe with another player also connected to the server.  This is achieved in a number of steps
-- Server (Host) is turned on.
-- Each player (Client) runs the application and is presented with a menu.  This menu gives the player the option to connect to the server and when they do they are placed in a lobby queue waiting for another player to connect.
-- When another player has joined the lobby queue the game starts and each player is presented with a gameboard.
-
-Each player will see a gameboard that is represented by a 3 row X 3 column grid.  Each player will take their turn by typing into their application command line where they would like to move.  This is aided by the boards grid rows and columns being label from 1 - 3.  The player may type for example "1 2" to indicate they wish to move to the 1st row in the 2nd column.  This will continue until either one of the players wins or it is a draw.  It will then ask the players do they wish to play again.
-
 ## Dev Log
 ### Outline Idea
 To create a fully networked game in Java 8.  The game will be competitive where both players are pitted against one another. The games network would host a server capable of connecting multiple clients and queuing upto 2 clients per game.  The game will act in a turn based manner with the player 1 taking their turn, first, followed by player 2, and will repeat until the game ends.
