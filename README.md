@@ -154,7 +154,8 @@ To achieve our project goals we had to divide the work load between us.  After d
 
 ### Testing
 
-### Polishing
+### Polishing Code
+After the testing of the program was completed our next step was to 'polish' our code.  This entailed commenting our code sufficently to be easily understood by an outside developer. Removing debugging code, redundant data and any non-essential code within the program. Finally we tested the project again to ensure that polishing our code hadn't lead to any undesired results.
 
 ## Testing Plans
 
