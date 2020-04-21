@@ -170,6 +170,7 @@ To achieve our project goals we had to divide the work load between us.  After d
 ### Gitflow Problems 
 
 ### JavaFX Pivot
+During the development of the program we ran into a problem. Both Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) had each done their part in as intended in 'Division of Labour'.  However, when trying to send the logical and graphical data across the network we ran into a number of difficulties.  The logical and graphical data was stored in an [Observable List](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html).  Trying to access the changes as they occured while sending the data across the network proved difficult.  Also JavaFX required another thread to be used when we needed to update __any graphics__ during execution.  We began to review the way in which JavaFX stored its data and came to the conclusion that this could be achieved easier through the use of Javas Swing and AWT packages.  Thus we changed from using JavaFX to Java Swing + AWT for the graphical component of the program.
 
 ### Network Graphics
 
