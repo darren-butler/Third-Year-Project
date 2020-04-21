@@ -141,6 +141,7 @@ Each player will see a gameboard that is represented by a 3 row X 3 column grid.
 
 ## Dev Log
 ### Outline Idea
+To create a fully networked game in Java 8.  The game will be competitive where both players are pitted against one another. The games network would host a server capable of connecting multiple clients and queuing upto 2 clients per game.  The game will act in a turn based manner with the player 1 taking their turn, first, followed by player 2, and will repeat until the game ends.
 
 ### Division of Labour
 To achieve our project goals we had to divide the work load between us.  After discussing how we would go about this we decided that Darren-B312 (Darren Butler) would take responsiblity for networking which would involve creating the server, clients and data that would be sent across the network.  MrSkillage (Conor Rabbitte) would take responsibility for the graphics which would involve creating and displaying graphical data, storing game logic and transforming it into graphics.  
