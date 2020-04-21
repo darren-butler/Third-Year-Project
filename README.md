@@ -1,25 +1,18 @@
 # Third-Year-Project
 - [Introduction](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#intro)
-- [System Requirements](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#sysreq)
 - [User Guide](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#usrgd)
 - [Technology Used and Why](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#tech&why)
 - [System Architecture](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#sysarch)
 - [Research](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#research)
-- [DevLog](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#devlog)
+- [Dev Log](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#devlog)
+- [Future Development](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#future)
+- [Conclusions](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#conclusions)
 
 
-devlog
 ## Introduction <a name="intro"></a>
 
 This github repository is home to a collaborated project by Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) for their third year project in the 'Professional Practice in Information Technology' module.
 The program created is a multiplayer networked game of Tic-Tac-Toe, using the Java programming language. 
-
-## System Requirements <a name="sysreq"></a>
-
-- Java 8 Language
-- Virtual Personal Computer __(VPC)__ in the Cloud.
-- Server (Cloud)
-- Client(s) (minimum of 2)
 
 ## User Guide <a name="usrgd"></a>
 In order to play a game of TicTacToe you will need:
@@ -174,6 +167,6 @@ The program was tested by creating a virtual personal computer (VPC) in the clou
 ### Polishing Code
 After the testing of the program was completed our next step was to 'polish' our code.  This entailed commenting our code sufficently to be easily understood by an outside developer. Removing debugging code, redundant data and any non-essential code within the program. Finally we tested the project again to ensure that polishing our code hadn't lead to any undesired results.
 
-## Recommendations for Future Development
+## Future Development <a name="future"></a>
 
-## Conclusions
+## Conclusions <a name="conclusions"></a>
