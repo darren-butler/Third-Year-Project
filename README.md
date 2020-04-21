@@ -13,7 +13,7 @@ The program created is a multiplayer networked game of Tic-Tac-Toe, using the Ja
 - Client(s) (minimum of 2)
 
 ## User Guide
-In order to play a game of TicTacToe you will need a few 
+In order to play a game of TicTacToe you will need:
 
 - Java8 installed
 - Host machine to run the Server code
@@ -45,9 +45,11 @@ On the server you should see the ip address from which the client is connected:
 
 Once connected, you can disconnect(2) or queue(3) for a new game. When you queue for a game, you should see this:
 ![Client Queue](https://i.imgur.com/HIpglf2.png)
+
 If there is no one else queuing for a game after some time, this will throw an exception and the program will crash out.
 If there are enough players (2) in the queue to start a game, the server will initiate a new game and prompt 1 player to make a move:
 ![Client Gameplay](https://i.imgur.com/kT2DPZA.png)
+
 To make your move, input the cell you want to choose as two integers for the row and column. 
 (E.g. to select the bottom-left cell (row 2 column 0) input '20' with no spaces)
 ![](https://i.imgur.com/DHlixs5.png)
