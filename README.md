@@ -92,14 +92,23 @@ The project is designed using a basic Java Project created in Eclipse Oxygen. Th
 - com.networking 
   - This package contains the classes used to handle the networking side of the program.  These include the Server-Handler, the players Connection-Handlers, and the games Data being sent during execution and more.
 
-## Research
 
+## Research
+Our initial point of research is to look for other examples of projects like ours. This involves searching for other 2 player, turn based games with relatively simple graphics that worked over a network. Preferably programmed in Java or another programming language with which we were familiar for ease of comprehension. The following links describe, in detail, some of the components we would need to complete this project:
+
+- [Gamasutra - Java Network Game Programming](https://www.gamasutra.com/view/feature/3218/java_network_game_programming.php?print=1)
 - [Tic-Tac-Toe Basic Program](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html)
-- [Tic-Tac-Toe Between Two Clients](https://www.java-tips.org/java-se-tips-100019/15-javax-swing/584-a-game-of-tic-tac-toe-that-can-be-played-between-two-client-applets.html)
 - [Tic-Tac-Toe Case Study](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html)
-- [Mouse-Listener Toggle 1](https://stackoverflow.com/questions/2627946/how-to-remove-mouselistener-actionlistener-on-a-jtextfield)
-- [Mouse-Listener Toggle 2](https://stackoverflow.com/questions/50672830/java-mouse-listener-toggle-version-click-counter)
-- [Javac @sources.txt Running Java Packages Through Command-Line](https://stackoverflow.com/questions/6623161/javac-option-to-compile-all-java-files-under-a-given-directory-recursively)
+
+### Networking 
+There are already many Java libraries that aim to simplify network programming for games in Java. As we have chosen to develop our project from a more “first principles” approach, we will not use these libraries. However, their implementation and usage could still be an asset for our own development. Two examples of libraries are [Jagnet – Java Game Networking]( https://github.com/gillius/jagnet) and [NitroNet]( https://github.com/jmrapp1/NitroNet). Both libraries are open source, which means they could be very useful to see how game networking is done under the hood.
+
+The concepts covered in our second year Applied Networking Technology modules will be invaluable throughout development. Of foremost importance is probably the distinction between [TCP]( https://searchnetworking.techtarget.com/definition/TCP) and [UDP]( https://www.geeksforgeeks.org/user-datagram-protocol-udp/). Both are data transmission protocols with their own advantages and disadvantages. TCP is the perfect fit for our needs. In a turn-based game, where very few data packets, containing key information are communicated each time, it is essential that nothing is lost. We also don’t need to leverage the speed of a UDP connection I.e. it is acceptable for 1 player to be waiting on another player to make their move for a time.
+
+As part of our third year Operating Systems module, we covered multithreaded socket programming in Java. In fact, our main assignment for this module was to build a [multithreaded client/server]( https://github.com/Darren-B312/Multithreaded-TCP-Client-Server) application where multiple clients can connect and make changes to a shared data object in a thread safe way. We plan to take this concept and expand on it. Instead of just having clients connect and make changes, we want to develop a much more robust server, capable of listening for client connections, putting ready clients into a queue, and starting new games with players in the queue. This will require a good deal of multi-threading which must be handled properly for the program to be usable. 
+
+Another useful resource pertaining to Java socket programming is [Java Network Programming – Elliotte Rusty Harold]( https://books.google.ie/books/about/Java_Network_Programming.html?id=NyxObrhTv5oC&redir_esc=y) . This book has easy to comprehend concepts and well laid out examples of multithreaded socket programming in Java. Specifically, page 341 – 362 explain several useful servers and show their implementation in Java.
+
 
 ## Functionality
 
