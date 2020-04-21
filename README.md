@@ -68,7 +68,9 @@ $ javac @sources.txt
 $ java com.application.Game
 ```
 You will be presented with the same menu as before. Input (4) to play a local game. You should be presented with this graphical version of TicTacToe:
+
 ![Graphical Game](https://i.imgur.com/R6nq2TV.png)
+
 To play each player can take turns selecting their cell with the mouse.
 
 
