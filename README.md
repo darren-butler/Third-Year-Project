@@ -1,3 +1,4 @@
+
 # Third-Year-Project
 - [Introduction](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#intro)
 - [User Guide](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#usrgd)
@@ -62,7 +63,7 @@ This back and forth will continue until either a player wins, or there are no mo
 
 ![](https://i.imgur.com/lRJDt1L.png)
 
-To play a local game is very straightforward. Simple run the client application:
+To play a local game is very straightforward. Simply run the client application:
 ```
 $ cd src
 $ dir /s /B *.java > sources.txt
@@ -105,7 +106,7 @@ This section will outline, in detail, the individual components of the systems n
 
 * com.networking.ConnectionListener – a runnable, instantiated by the server. Its sole purpose is to listen for incoming connections on a specified port, instantiate a Socket and ClientHandler for communication, and add this new client to the ArrayList<ClientHandler>. It then starts the ClientHandler thread.
 
-* com.networking.Data – used to encapsulate all data send between server and client. It implements the Serializable Interface and has an int header, String body, int[][] board and int player. This is all data that could be needed by either client or server.
+* com.networking.Data – used to encapsulate all data sent between server and client. It implements the Serializable Interface and has an int header, String body, int[][] board and int player. This is all data that could be needed by either client or server.
 
 * com.networking.ListHandler – monitors the list of connected clients for any that are ready to play a game, or disconnect. The server instantiates this thread. It constantly iterates over the list of connected clients and checks if any client has flagged themselves as ready or disconnected.
 
@@ -158,7 +159,7 @@ To achieve our project goals, we had to divide the workload between us.  After d
 Midway through development we encountered an issue when merging our two major branches. At the outset we attempted to use the [GitFlow]( https://datasift.github.io/gitflow/IntroducingGitFlow.html) branching model. Where there would be a master branch, then a develop branch pulled from the master, and then each of us pulled our own feature branches. The problem was, we allowed our feature branches to become somewhat monolithic. It took a considerable amount of development hours trying to untangle the mess and not lose our work. Eventually we were able to salvage the codebase by carefully rolling back one push at a time and get our code up to date on the one master branch. This was quite an obstacle, interestingly, I think we both learned more about git and source control from trying to reconcile the mess than we had learned in the last few years combined.
 
 ### JavaFX Pivot
-During the development of the program we ran into a problem. Both Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) had each done their part in as intended in 'Division of Labour'.  However, when trying to send the logical and graphical data across the network we ran into a number of difficulties.  The logical and graphical data was stored in an [Observable List](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html).  Trying to access the changes as they occurred  while sending the data across the network proved difficult.  Also, JavaFX required another thread to be used when we needed to update __any graphics__ during execution.  We began to review the way in which JavaFX stored its data and concluded that this could be achieved easier through the use of Javas Swing and AWT packages.  Thus, we changed from using JavaFX to Java Swing + AWT for the graphical component of the program.
+During the development of the program we ran into a problem. Both Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) had each done our part as set out in 'Division of Labour'.  However, when trying to send the logical and graphical data across the network we ran into a number of difficulties.  The logical and graphical data was stored in an [Observable List](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html).  Trying to access the changes as they occurred  while sending the data across the network proved difficult.  Also, JavaFX required another thread to be used when we needed to update __any graphics__ during execution.  We began to review the way in which JavaFX stored its data and concluded that this could be achieved easier through the use of Javas Swing and AWT packages.  Thus, we changed from using JavaFX to Java Swing + AWT for the graphical component of the program.
 
 ### Network Graphics
 Towards the end of development, we encountered a major issue. We were unable to easily extract out logical game data from the graphical components of the application and send it over a network to have it be redrawn for the other player. This meant we had to keep the networked version of the game a simple console app, where the Tic-tac-toe board would be drawn using simple ascii characters in black and white. This was not ideal; in hindsight it may have been better to both work together sequentially on the networking components and then move on to the graphics instead of splitting to take a portion of the workload and trying to stitch it together. Both of us working on each component of the code from the ground up would mean we would have a more fundamental understanding of how they work and probably be better prepared to problem solve and find a solution. Two heads are better than one.
@@ -171,7 +172,7 @@ After the testing of the program was completed our next step was to 'polish' our
 
 ## Future Development <a name="future"></a>
 In this project we achieved a fully networked game of Tic-Tac-Toe capable of hosting multiple games concurrently.  We also achieved a fully graphical version of Tic-Tac-Toe in a separate windowed application. In the future the first task we would like to implement is to incorporate the graphical windowed version of Tic-Tac-Toe into the network, replacing the console command version currently running.  We would also look into adding audio sounds for the game such as mouse clicks and custom made images.
-Another idea we had was introduce a new game or two into the program allowing the players to select from among a list of games to play.  The possible games we would like to introduce would be more turn-based games such as chess and battleships. Furthering  this idea, we would create our own cooperative game in which two players would work together towards a common goal against a simple artificially intelligent enemy.  This game would be designed as a turn-based game with custom made graphics, sound effects, logic, rules, and networking.
+Another idea we had was introduce a new game or two into the program allowing the players to select from a list of games to play.  The possible games we would like to introduce would be more turn-based games such as chess and battleships. Furthering  this idea, we would create our own cooperative game in which two players would work together towards a common goal against a simple artificially intelligent enemy.  This game would be designed as a turn-based game with custom made graphics, sound effects, logic, rules, and networking.
 
 ## Conclusions <a name="conclusions"></a>
 Overall, we are both happy with what we achieved throughout development and we both learned several useful lessons about software development as part of a team. 
