@@ -103,7 +103,7 @@ public class Game {
 	}
 
 	static void printMenu() {   
-		Utilities.clrscr();
+		//Utilities.clrscr();
 		System.out.println("--MENU--");
 		System.out.println("1. Connect");
 		System.out.println("2. Disconnect");
