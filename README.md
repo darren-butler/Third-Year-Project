@@ -117,7 +117,7 @@ This section will outline, in detail, the individual components of the systems n
 
 
 ## Research <a name="research"></a>
-Our initial point of research is to look for other examples of projects like ours. This involves searching for other 2 player, turn based games with relatively simple graphics that worked over a network. Preferably programmed in Java or another programming language with which we were familiar for ease of comprehension. The following links describe, in detail, some of the components we would need to complete this project:
+Our initial point of research is to look for other examples of projects like ours. This involves searching for other 2 player, turn-based games with relatively simple graphics that worked over a network. Preferably programmed in Java or another programming language with which we were familiar for ease of comprehension. The following links describe, in detail, some of the components we would need to complete this project:
 
 - [Gamasutra - Java Network Game Programming](https://www.gamasutra.com/view/feature/3218/java_network_game_programming.php?print=1)
 - [Tic-Tac-Toe Basic Program](https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGame_TicTacToe.html)
