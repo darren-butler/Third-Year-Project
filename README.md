@@ -1,11 +1,11 @@
 # Third-Year-Project
-- [Introduction](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#intro)
-- [System Requirements](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#sysreq)
-- [User Guide](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#usrgd)
-- [Technology Used and Why](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#tech&why)
-- [System Architecture](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#sysarch)
-- [Research](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#research)
-- [DevLog](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#devlog)
+- [Introduction](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#intro)
+- [System Requirements](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#sysreq)
+- [User Guide](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#usrgd)
+- [Technology Used and Why](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#tech&why)
+- [System Architecture](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#sysarch)
+- [Research](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#research)
+- [DevLog](https://github.com/Darren-B312/Third-Year-Project/blob/master/README.md#devlog)
 
 
 devlog
