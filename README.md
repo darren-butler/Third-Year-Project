@@ -1,18 +1,27 @@
 # Third-Year-Project
+- [Introduction](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#intro)
+- [System Requirements](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#sysreq)
+- [User Guide](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#usrgd)
+- [Technology Used and Why](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#tech&why)
+- [System Architecture](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#sysarch)
+- [Research](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#research)
+- [DevLog](https://github.com/Darren-B312/Third-Year-Project/edit/master/README.md#devlog)
 
-## Introduction
+
+devlog
+## Introduction <a name="intro"></a>
 
 This github repository is home to a collaborated project by Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) for their third year project in the 'Professional Practice in Information Technology' module.
 The program created is a multiplayer networked game of Tic-Tac-Toe, using the Java programming language. 
 
-## System Requirements
+## System Requirements <a name="sysreq"></a>
 
 - Java 8 Language
 - Virtual Personal Computer __(VPC)__ in the Cloud.
 - Server (Cloud)
 - Client(s) (minimum of 2)
 
-## User Guide
+## User Guide <a name="usrgd"></a>
 In order to play a game of TicTacToe you will need:
 
 - Java8 installed
@@ -72,7 +81,7 @@ You will be presented with the same menu as before. Input (4) to play a local ga
 ![Graphical Game](https://i.imgur.com/R6nq2TV.png)
 
 To play each player can take turns selecting their cell with the mouse.
-## Technology Used and Why
+## Technology Used and Why <a name="tech&why"></a>
 
 The following is a list of technologies we used during development and why.
 - [Java 8](https://www.oracle.com/technetwork/java/javase/overview/java8-2100321.html), a very straightforward decision, Java, specifically version 8 is the programming language that both of use are most familiar with. And we have been exposed to many applications of this programming language in other modules, like socket programming, multithreading, data structures & algorithms.  
@@ -82,8 +91,7 @@ The following is a list of technologies we used during development and why.
 - [Discord](https://discordapp.com/), our primary tool for communication. It is a chat app mainly marketed for gamers and gaming communities. However, with it, we were able to setup our own chat server, host voice calls and stream our desktops. This was invaluable for pair programming and working through problems together, especially throughout the COVID-19 pandemic. Using discord, we were able to seamlessly work together remotely.
 - [Azure](https://azure.microsoft.com/en-us/), Microsoft cloud computing platform to host our server-side code for demonstration and proof of concept. Other options were Amazon Web Services and Google Cloud Platform, we chose Azure because they gave a free $170 credit and because setting up firewall rules on Azure was most straight forward.
 
-
-## System Architecture
+## System Architecture <a name="sysarch"></a>
 
 The code base is broken into three major java packages, each consisting of classes with single responsibilities. This was done to develop as loosely coupled a system as possible:
 - com.application
@@ -115,7 +123,7 @@ This section will outline, in detail, the individual components of the systems n
 * com.networking.ServerHandler – the inverse of a ClientHandler. It is instantiated by a client and used to send data to the server.
 
 
-## Research
+## Research <a name="research"></a>
 Our initial point of research is to look for other examples of projects like ours. This involves searching for other 2 player, turn based games with relatively simple graphics that worked over a network. Preferably programmed in Java or another programming language with which we were familiar for ease of comprehension. The following links describe, in detail, some of the components we would need to complete this project:
 
 - [Gamasutra - Java Network Game Programming](https://www.gamasutra.com/view/feature/3218/java_network_game_programming.php?print=1)
@@ -146,7 +154,21 @@ During our third year module of Graphics Programming we learned how to created a
 
 Another third year module Object-Oriented Programming taught us how to utilise core object-oriented (OOP) programming concepts and develop problem solving skills using the Java prgramming language. This will be put to good use throughout the projects design using OOP based classes to avoid redundant data, help maintainability, readability, and robustness.
 
-## Dev Log
+## Functionality
+
+__Questions:__
+- __What does it do?__
+- __How do I (USER) use it?__
+- __What do I (USER) see?__
+
+The programs main function is to allow N-number of players to connect to a server in which they can join a game of Tic-Tac-Toe with another player also connected to the server.  This is achieved in a number of steps
+- Server (Host) is turned on.
+- Each player (Client) runs the application and is presented with a menu.  This menu gives the player the option to connect to the server and when they do they are placed in a lobby queue waiting for another player to connect.
+- When another player has joined the lobby queue the game starts and each player is presented with a gameboard.
+
+Each player will see a gameboard that is represented by a 3 row X 3 column grid.  Each player will take their turn by typing into their application command line where they would like to move.  This is aided by the boards grid rows and columns being label from 1 - 3.  The player may type for example "1 2" to indicate they wish to move to the 1st row in the 2nd column.  This will continue until either one of the players wins or it is a draw.  It will then ask the players do they wish to play again.
+
+## Dev Log <a name="devlog"></a>
 ### Outline Idea
 To create a fully networked game in Java 8.  The game will be competitive where both players are pitted against one another. The games network would host a server capable of connecting multiple clients and queuing upto 2 clients per game.  The game will act in a turn based manner with the player 1 taking their turn, first, followed by player 2, and will repeat until the game ends.
 
@@ -156,7 +178,6 @@ To achieve our project goals we had to divide the work load between us.  After d
 ### Gitflow Problems 
 
 ### JavaFX Pivot
-During the development of the program we ran into a problem. Both Darren-B312 (Darren Butler) and MrSkillage (Conor Rabbitte) had each done their part in as intended in 'Division of Labour'.  However, when trying to send the logical and graphical data across the network we ran into a number of difficulties.  The logical and graphical data was stored in an [Observable List](https://docs.oracle.com/javase/8/javafx/api/javafx/collections/ObservableList.html).  Trying to access the changes as they occured while sending the data across the network proved difficult.  Also JavaFX required another thread to be used when we needed to update __any graphics__ during execution.  We began to review the way in which JavaFX stored its data and came to the conclusion that this could be achieved easier through the use of Javas Swing and AWT packages.  Thus we changed from using JavaFX to Java Swing + AWT for the graphical component of the program.
 
 ### Network Graphics
 
