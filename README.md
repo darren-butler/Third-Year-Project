@@ -145,6 +145,22 @@ The programs main function is to allow N-number of players to connect to a serve
 
 Each player will see a gameboard that is represented by a 3 row X 3 column grid.  Each player will take their turn by typing into their application command line where they would like to move.  This is aided by the boards grid rows and columns being label from 1 - 3.  The player may type for example "1 2" to indicate they wish to move to the 1st row in the 2nd column.  This will continue until either one of the players wins or it is a draw.  It will then ask the players do they wish to play again.
 
+## Dev Log
+### Outline Idea
+
+### Division of Labour
+To achieve our project goals we had to divide the work load between us.  After discussing how we would go about this we decided that Darren-B312 (Darren Butler) would take responsiblity for networking which would involve creating the server, clients and data that would be sent across the network.  MrSkillage (Conor Rabbitte) would take responsibility for the graphics which would involve creating and displaying graphical data, storing game logic and transforming it into graphics.  
+
+### Gitflow Problems 
+
+### JavaFX Pivot
+
+### Network Graphics
+
+### Testing
+
+### Polishing
+
 ## Testing Plans
 
 The programs functionality was tested by creating a virtual personal computer (VPC) in the cloud using Microsofts Azure.  The Server was then setup and run on the VPC in the cloud allowing multiple Clients (players) to connect to the Server.  Next the application was run on a different computer, __NOT THE VPC,__ for two players which connect to the Servers IP address through a designated port address.
